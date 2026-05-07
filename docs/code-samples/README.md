@@ -33,7 +33,7 @@ The `pymdownx.snippets` extension is configured in `mkdocs.yml`. Its `base_path`
 
 ````markdown
 ```sql
---8<-- "code-samples/sql/13-bitemporal-upsert.sql"
+;--8<-- "code-samples/sql/13-bitemporal-upsert.sql"
 ```
 ````
 
