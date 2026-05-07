@@ -29,7 +29,7 @@ If a single module needs several snippets that belong together, add a second slu
 
 ## Referencing snippets from a module
 
-The `pymdownx.snippets` extension is configured in `mkdocs.yml`. Its `base_path` defaults to `docs/`, so paths in references are written **relative to `docs/`** (no leading `docs/`):
+The `pymdownx.snippets` extension is configured in `mkdocs.yml` with `base_path: ["docs"]` and `check_paths: true`, so paths in references are written **relative to `docs/`** (no leading `docs/`) and broken references will fail the build:
 
 ````markdown
 ```sql
