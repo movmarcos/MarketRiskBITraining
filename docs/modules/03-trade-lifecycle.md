@@ -140,6 +140,64 @@ sequenceDiagram
 
 The risk warehouse subscribes to *both* the front-office feed (for risk and position) and the back-office feed (for reconciliation and accounting tie-out). Risk reporting does not wait for settlement — by the time a trade has settled, the desk has already hedged it five times. But the EOD reconciliation between FO and BO is where data-quality bugs are caught, and that reconciliation is a BI job.
 
+### 3.7 FO ↔ MO ↔ BO identifier mapping
+
+Section 3.5 made the point in passing; it deserves its own treatment, because the identifier-mapping problem is the single most common root cause of bad reconciliation queries.
+
+Each system mints its own primary key for the same economic trade:
+
+- **Front office** stamps the trade with an internal trade ID at the moment of capture (e.g. `FOT-2024-008812`). This ID is what the trader sees on their blotter and what the risk feed carries.
+- **Middle office** re-keys the trade when it confirms. For OTC derivatives this is the **USI** (Unique Swap Identifier, US/CFTC) or **UTI** (Unique Trade Identifier, EU/EMIR and global) — a regulator-mandated identifier that must be agreed bilaterally with the counterparty. For listed products it is the exchange's clearing reference. For prime-brokerage give-ups, MO mints a *give-up confirmation ID* distinct from both legs.
+- **Back office** assigns its own settlement reference (`SET-…`, `SSI-…`, depending on platform) when it generates the wire instruction. For cleared swaps the CCP also assigns its own ID — `LCH-…` at LCH SwapClear, `CME-…` at CME — and that becomes the legal identifier of the trade post-clearing.
+- **Counterparty** has *its* own internal trade ID for the same trade. You will never see this directly, but it is the value that appears on their confirmation when MO matches.
+
+**Why this matters for the data warehouse.** A naive `JOIN fo.trades f ON f.trade_id = b.trade_id bo.settlements b` will return zero rows. The keys are different namespaces. Every reconciliation depends on a **mapping table** maintained by Operations or Trade Support — one row per `(source_system, source_trade_id) → firm_trade_id` — and the freshness of that mapping table is now part of your data-quality surface area.
+
+**The "broken link" failure mode.** A trader amends `FOT-2024-008812` at 14:30: the notional drops from 100m to 80m. MO receives the amendment, re-confirms with the counterparty, and the new confirmation arrives back with a *new* USI (`USI-2026-...-V2`). The mapping table is updated overnight by an Ops process — but the process fails silently. BO never sees the amendment because its feed comes through the MO confirmation path; it settles the *original* 100m. Your warehouse now contains:
+
+- An FO row showing 80m, status NEW, version 2.
+- An MO row showing 80m, USI V2.
+- A BO row showing 100m settled.
+- No mapping linking the new USI to the FO trade ID.
+
+The reconciliation report shows two unmapped rows on either side and *no value tear*, because the joinable population sees nothing in common. The 20m discrepancy is invisible until someone reads the cash ledger.
+
+**The data engineer's response.** Maintain a `trade_xref` (or `instrument_xref` for instruments) dimension in the warehouse, joined on `(source_system, source_trade_id)` and producing a synthetic firm-wide ID. Make it SCD Type 2 — every change to the mapping is a new row with `valid_from` / `valid_to` — so historical breaks can be replayed exactly as they were known on the day. Reconciliation queries join through the xref, not directly between source systems. The xref itself becomes a first-class data product with its own SLA and its own freshness alert.
+
+```mermaid
+flowchart TB
+    subgraph FO[Front Office]
+        F1[FOT-2024-008812<br/>notional 80m, NEW]
+    end
+    subgraph MO[Middle Office]
+        M1[USI-2026-...-V2<br/>matched 80m]
+    end
+    subgraph BO[Back Office / CCP]
+        B1[SET-559014 / LCH-77231<br/>settle 100m]
+    end
+    subgraph XR[trade_xref - SCD2]
+        X1["(FO, FOT-2024-008812) → FIRM-42"]
+        X2["(MO, USI-2026-...-V2) → FIRM-42"]
+        X3["(BO, SET-559014)      → FIRM-42"]
+    end
+    F1 --- X1
+    M1 --- X2
+    B1 --- X3
+    X1 --> R[FIRM-42 - reconciles]
+    X2 --> R
+    X3 --> R
+```
+
+**Real-world identifiers worth recognising.**
+
+- **USI** (Unique Swap Identifier) — Dodd-Frank Title VII, US-issued for swaps reported to a Swap Data Repository.
+- **UTI** (Unique Trade Identifier) — global ISO/CPMI-IOSCO standard, mandatory under EMIR REFIT (EU), MAS (Singapore), JFSA (Japan), and increasingly elsewhere. UTIs are bilaterally agreed; the "UTI generation waterfall" defines who mints it (the CCP, the SEF, the seller, etc.).
+- **CCP cleared-trade IDs** — LCH SwapClear, CME ClearPort, ICE Clear all re-stamp the trade post-clearing. Once a trade clears, the CCP ID is the legal identifier; the original FO ID survives only as a cross-reference.
+- **Give-up trade IDs** in prime brokerage — an executing broker books a trade, gives it up to the prime broker, who books a mirror; both have FO IDs and the give-up agreement links them.
+- **Allocation IDs** — a block trade allocated across multiple sub-accounts produces a parent ID and N child IDs; the xref must model that one-to-many.
+
+The principle does not change: the identifier is *which system you are looking from*, not *what the trade is*. The xref answers the second question.
+
 ## 4. Worked examples
 
 ### Example 1 — SQL: as-of state from an event log
@@ -289,6 +347,143 @@ Expected output for the sample data:
 
 A common extension is a value-tear check: even when the mapping exists, the `fo.notional` may not equal `bo.settle_amount` (FX-converted), and the difference is a separate alert — economics tear vs existence tear. Get the existence tear right first.
 
+### Example 3 — Python: folding an event log into current position state
+
+The two SQL examples above run on a database. The same logic in pandas is useful for ad-hoc reconciliation work — you have a CSV from one system and a parquet extract from another and you need to produce "current state" without round-tripping through a warehouse. The pattern is a *left fold* over the event log, ordered by `(event_ts, event_seq)`.
+
+The schema of `event_log` is the same as in Example 1 — `trade_id`, `event_seq`, `event_type`, `event_ts`, `business_date`, `payload_json` — loaded into a pandas DataFrame.
+
+```python
+# Module: 03 — The Trade Lifecycle (Risk Lens)
+# Purpose:  Fold a long-format trade event log into a wide "current state"
+#           DataFrame as of a chosen timestamp. Handles BOOK / AMEND / CANCEL /
+#           TERMINATE. Intended for ad-hoc reconciliation, not production EOD.
+# Depends:  pandas (3.11+).
+
+from __future__ import annotations
+
+import json
+import pandas as pd
+
+
+def fold_events_to_position(
+    events: pd.DataFrame,
+    as_of: pd.Timestamp,
+) -> pd.DataFrame:
+    """Collapse an event log into one row per active trade as of ``as_of``.
+
+    Expected ``events`` columns: trade_id, event_seq, event_type, event_ts,
+    business_date, payload_json. ``event_type`` is one of
+    BOOK / AMEND / CANCEL / TERMINATE.
+    """
+    if events.empty:
+        return events.iloc[0:0]
+
+    # 1. Apply the cutoff. Events stamped strictly after the as-of are unseen.
+    in_scope = events.loc[events["event_ts"] <= as_of].copy()
+
+    # 2. Stable ordering: by event_ts, then event_seq to break same-ts ties.
+    in_scope = in_scope.sort_values(
+        by=["trade_id", "event_ts", "event_seq"],
+        kind="mergesort",
+    )
+
+    # 3. Take the last event per trade — the trade's current state.
+    last = in_scope.groupby("trade_id", as_index=False).tail(1)
+
+    # 4. Drop trades whose terminal event removes them from the active book.
+    active = last.loc[~last["event_type"].isin(["CANCEL", "TERMINATE"])].copy()
+
+    # 5. Project payload_json keys into columns. Latest event wins by design.
+    payloads = active["payload_json"].apply(json.loads).apply(pd.Series)
+    out = pd.concat(
+        [
+            active[["trade_id", "event_type", "event_ts", "business_date"]]
+            .rename(columns={"event_type": "last_event_type",
+                             "event_ts": "last_event_ts"})
+            .reset_index(drop=True),
+            payloads.reset_index(drop=True),
+        ],
+        axis=1,
+    )
+
+    # 6. AMEND lands the trade back in NEW (per section 3.2); BOOK is NEW too.
+    out["status"] = "NEW"
+
+    head = ["trade_id", "status", "last_event_type", "last_event_ts",
+            "business_date"]
+    tail = [c for c in out.columns if c not in head]
+    return out[head + tail].sort_values("trade_id").reset_index(drop=True)
+
+
+if __name__ == "__main__":
+    sample = pd.DataFrame([
+        # T-1: BOOK then AMEND — survives with amended notional.
+        {"trade_id": "T-1", "event_seq": 1, "event_type": "BOOK",
+         "event_ts": pd.Timestamp("2026-05-06 09:30"),
+         "business_date": "2026-05-06",
+         "payload_json": '{"notional": 100000000, "rate": 0.0425, "ccy": "USD"}'},
+        {"trade_id": "T-1", "event_seq": 2, "event_type": "AMEND",
+         "event_ts": pd.Timestamp("2026-05-07 11:15"),
+         "business_date": "2026-05-07",
+         "payload_json": '{"notional": 80000000, "rate": 0.0430, "ccy": "USD"}'},
+        # T-2: BOOK then CANCEL — drops out.
+        {"trade_id": "T-2", "event_seq": 1, "event_type": "BOOK",
+         "event_ts": pd.Timestamp("2026-05-06 10:00"),
+         "business_date": "2026-05-06",
+         "payload_json": '{"notional": 25000000, "rate": 0.0410, "ccy": "USD"}'},
+        {"trade_id": "T-2", "event_seq": 2, "event_type": "CANCEL",
+         "event_ts": pd.Timestamp("2026-05-06 16:45"),
+         "business_date": "2026-05-06",
+         "payload_json": '{}'},
+        # T-3: BOOK then TERMINATE — drops out.
+        {"trade_id": "T-3", "event_seq": 1, "event_type": "BOOK",
+         "event_ts": pd.Timestamp("2026-05-05 14:00"),
+         "business_date": "2026-05-05",
+         "payload_json": '{"notional": 50000000, "rate": 0.0500, "ccy": "EUR"}'},
+        {"trade_id": "T-3", "event_seq": 2, "event_type": "TERMINATE",
+         "event_ts": pd.Timestamp("2026-05-07 09:00"),
+         "business_date": "2026-05-07",
+         "payload_json": '{"notional": 50000000, "rate": 0.0500, "ccy": "EUR"}'},
+        # T-4: untouched BOOK — survives unchanged.
+        {"trade_id": "T-4", "event_seq": 1, "event_type": "BOOK",
+         "event_ts": pd.Timestamp("2026-05-07 08:15"),
+         "business_date": "2026-05-07",
+         "payload_json": '{"notional": 15000000, "rate": 0.0395, "ccy": "GBP"}'},
+    ])
+
+    as_of = pd.Timestamp("2026-05-07 17:00")
+    state = fold_events_to_position(sample, as_of)
+    print(f"Active book as of {as_of}:")
+    print(state.to_string(index=False))
+```
+
+Run it and you get:
+
+```text
+Active book as of 2026-05-07 17:00:00:
+trade_id status last_event_type       last_event_ts business_date  notional   rate ccy
+     T-1    NEW           AMEND 2026-05-07 11:15:00    2026-05-07  80000000 0.0430 USD
+     T-4    NEW            BOOK 2026-05-07 08:15:00    2026-05-07  15000000 0.0395 GBP
+```
+
+Trace it:
+
+- `T-1` was booked at 100m, then amended down to 80m on 7 May. The fold takes the latest event (`AMEND`), unpacks its payload, and emits one row at 80m. Status is NEW because an AMEND lands the trade back in NEW (section 3.2).
+- `T-2` was booked then cancelled on the same business day. The latest event is `CANCEL`, which the fold treats as terminal — the trade is dropped from the active book entirely.
+- `T-3` was booked on 5 May and terminated on 7 May. Latest event is `TERMINATE`, dropped.
+- `T-4` was a single `BOOK` with no further events; it survives unchanged.
+
+**Why this is harder than it looks.**
+
+- **Sort stability matters.** Two events with the same `event_ts` (a feed that stamps everything at second precision and lands a BOOK + AMEND in the same batch) will produce non-deterministic ordering under an unstable sort. The function uses `kind="mergesort"` (a stable sort) and breaks ties on `event_seq`, which is the canonical tiebreaker. `event_seq` must be monotonic per `trade_id` upstream — that is a contract the source system has to honour.
+- **Idempotence under replay.** Folding the same event log twice must produce the same output. Since the fold is purely a function of the input rows and the `as_of` parameter, it is idempotent by construction — no hidden state, no random sampling. This matters when you re-run the reconciliation after a late-arriving event lands.
+- **No partial states.** A trade that has been *partially* unwound (notional 100m → 60m) is still NEW with an updated payload, not "PARTIALLY_UNWOUND". The status taxonomy is intentionally narrow; quantity changes ride in the payload.
+
+**When to use this in the warehouse.** For one-off ad-hoc reconciliation against a small extract, a Python fold is the right tool — you can iterate in a notebook, you can sanity-check edge cases, and the code reads top-to-bottom. **Do not use this pattern for production EOD position calculation.** Production should use SQL set-based logic (the `ROW_NUMBER` pattern in Example 1) for performance and for transaction-level consistency with the rest of the warehouse load. The Python fold is for the engineer's workbench, not the batch.
+
+The same fold pattern shows up in three places that come up later in the curriculum: **event sourcing** (where the database *is* an event log and the current state is always derived), **change-data-capture (CDC)** ingestion (where you fold a stream of inserts/updates/deletes from a source database into a mirror), and **bitemporal queries** ([Module 13](13-time-bitemporality.md), where the fold is parameterised by *both* a business cutoff and a knowledge cutoff).
+
 ## 5. Common pitfalls
 
 !!! warning "Watch out"
@@ -297,6 +492,8 @@ A common extension is a value-tear check: even when the mapping exists, the `fo.
     3. **Pulling the latest snapshot only and missing intra-day churn.** If your batch reads `fact_trade_state` once at 18:00, you will miss any trade that was booked and cancelled within the day. For some risk reports that is fine; for others (intra-day P&L attribution, T+0 limit monitoring) it is not. Know which of your downstream consumers care, and either land the event log or expose a separate intra-day view.
     4. **Cross-region timezone confusion on `business_date`.** Tokyo's 7 May ends before London's 7 May begins. A "global" reconciliation that joins FO and BO rows on `business_date` without first normalising each region's calendar will silently match Tokyo's 7-May trades against London's 6-May settlements. Store both `event_ts` (UTC) and the *region's* `business_date`, and document the region cutover.
     5. **Trusting the FO ID across systems.** The front-office trade ID is *not* the back-office reference and is *not* the confirmation ID. Mapping tables exist for a reason; trust them when they are populated and treat their gaps as the leading indicator of a tear.
+    6. **Trusting the FO `as_of` timestamp for risk reporting when MO holds the matched/confirmed timestamp.** FO stamps the trade the instant it is captured; MO does not stamp it as economically agreed until the counterparty confirmation lands, which can be hours or a day later. At month-end this matters: a trade booked at 17:55 on 31 May and confirmed at 09:30 on 1 June belongs to May for risk and to June for confirmation-state reporting. A reconciliation that uses MO's confirmed-ts as if it were the FO booking-ts will silently shift volume across the month boundary. Always carry both timestamps explicitly and let the consumer choose.
+    7. **Re-running EOD against a partially loaded event log.** Without an upstream watermark or a "ready" signal, the EOD risk batch will happily run against a feed that is half-arrived — the SQL is internally consistent, the row counts look plausible, the report ships. The defect surfaces the next morning when the missing 12% of the day's volume finally lands. The defence is a hard gate: the batch refuses to start until upstream publishes a `feed_ready` marker for the target `business_date`, and the marker is set only after row counts and checksums against the source agree. "Run anyway" buttons should require a named human approver and leave an audit trail.
 
 ## 6. Exercises
 
