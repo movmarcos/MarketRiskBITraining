@@ -1,413 +1,107 @@
 /* ============================================================
-   Market Risk BI Training — Light-first study palette
-   Warm cream background, deep navy chrome, amber accents.
-   IBM Plex Sans + JetBrains Mono.
+   Market Risk BI Training — Homepage hero + phase cards
+   Uses stock Material color tokens; no palette overrides.
    ============================================================ */
 
-:root {
-  /* Brand */
-  --mr-navy:        #1A2F4F;   /* header, headings */
-  --mr-navy-deep:   #0F1F36;   /* footer */
-  --mr-navy-soft:   #2A3F5C;   /* secondary text */
-  --mr-amber:       #B27D00;   /* accent on light bg (WCAG AA on cream) */
-  --mr-amber-warm:  #D9A300;   /* hero highlights, hover */
-  --mr-amber-bright:#FFB800;   /* dark-mode accent */
-  --mr-amber-soft:  rgba(178, 125, 0, 0.10);
-
-  /* Light surfaces */
-  --mr-cream:       #FFFFFF;   /* page bg — pure white */
-  --mr-paper:       #FFFFFF;   /* cards */
-  --mr-surface-2:   #F5F7FA;   /* code wells, table stripes */
-  --mr-rule-light:  rgba(26, 47, 79, 0.10);
-  --mr-text:        #1F2A3D;
-  --mr-text-soft:   #4A5872;
-  --mr-text-faint:  #7A8699;
-
-  /* Dark surfaces (for slate scheme) */
-  --mr-d-bg:        #14202F;
-  --mr-d-bg-2:      #1B2B3F;
-  --mr-d-bg-3:      #243650;
-  --mr-d-text:      #E5ECF5;
-  --mr-d-rule:      rgba(143, 163, 191, 0.18);
-}
-
-/* ============================================================
-   LIGHT scheme — primary
-   ============================================================ */
-[data-md-color-scheme="default"] {
-  /* Surfaces */
-  --md-default-bg-color:         var(--mr-cream);
-  --md-default-bg-color--light:  var(--mr-paper);
-  --md-default-bg-color--lighter:#FFFFFF;
-  --md-default-bg-color--lightest:#FFFFFF;
-
-  /* Text */
-  --md-default-fg-color:         var(--mr-text);
-  --md-default-fg-color--light:  var(--mr-text-soft);
-  --md-default-fg-color--lighter:var(--mr-text-faint);
-  --md-default-fg-color--lightest:#A2AEC0;
-
-  /* Header / nav chrome */
-  --md-primary-fg-color:         var(--mr-navy);
-  --md-primary-fg-color--light:  #2D4670;
-  --md-primary-fg-color--dark:   #0F1F36;
-  --md-primary-bg-color:         #FFFFFF;
-  --md-primary-bg-color--light:  rgba(255, 255, 255, 0.8);
-
-  /* Accent */
-  --md-accent-fg-color:               var(--mr-amber);
-  --md-accent-fg-color--transparent:  var(--mr-amber-soft);
-
-  /* Links */
-  --md-typeset-a-color:          var(--mr-navy);
-  --md-typeset-mark-color:       rgba(255, 184, 0, 0.30);
-
-  /* Code (light: cool gray well, navy text, refined syntax colors) */
-  --md-code-bg-color:            var(--mr-surface-2);
-  --md-code-fg-color:            #1F2A3D;
-  --md-code-hl-color:            rgba(178, 125, 0, 0.18);
-  --md-code-hl-keyword-color:    #B27D00;
-  --md-code-hl-function-color:   #1A4A8E;
-  --md-code-hl-string-color:     #2E7D5A;
-  --md-code-hl-number-color:     #B85C2C;
-  --md-code-hl-comment-color:    #7A8699;
-  --md-code-hl-name-color:       #1F2A3D;
-  --md-code-hl-operator-color:   #B27D00;
-  --md-code-hl-punctuation-color:#4A5872;
-
-  /* Admonitions */
-  --md-admonition-bg-color:      var(--mr-paper);
-  --md-admonition-fg-color:      var(--mr-text);
-
-  /* Footer */
-  --md-footer-bg-color:          var(--mr-navy-deep);
-  --md-footer-bg-color--dark:    #050D18;
-}
-
-/* ============================================================
-   DARK scheme — secondary (toggle)
-   Toned down from the prior pure-navy to feel less aggressive.
-   ============================================================ */
-[data-md-color-scheme="slate"] {
-  --md-hue: 215;
-
-  --md-default-bg-color:         var(--mr-d-bg);
-  --md-default-bg-color--light:  var(--mr-d-bg-2);
-  --md-default-bg-color--lighter:var(--mr-d-bg-3);
-  --md-default-bg-color--lightest:#2D4060;
-
-  --md-default-fg-color:         var(--mr-d-text);
-  --md-default-fg-color--light:  #C9D5E6;
-  --md-default-fg-color--lighter:#A4B5CC;
-  --md-default-fg-color--lightest:#6A7E99;
-
-  --md-primary-fg-color:         var(--mr-navy-deep);
-  --md-primary-fg-color--light:  var(--mr-navy);
-  --md-primary-fg-color--dark:   #050D18;
-  --md-primary-bg-color:         #FFFFFF;
-
-  --md-accent-fg-color:               var(--mr-amber-bright);
-  --md-accent-fg-color--transparent:  rgba(255, 184, 0, 0.12);
-
-  --md-typeset-a-color:          var(--mr-amber-bright);
-  --md-typeset-mark-color:       rgba(255, 184, 0, 0.28);
-
-  --md-code-bg-color:            #0F1B2C;
-  --md-code-fg-color:            #DCE6F2;
-  --md-code-hl-color:            rgba(255, 184, 0, 0.18);
-  --md-code-hl-keyword-color:    #FFB800;
-  --md-code-hl-function-color:   #4FB8FF;
-  --md-code-hl-string-color:     #7BD88F;
-  --md-code-hl-number-color:     #FF9E7E;
-  --md-code-hl-comment-color:    #5F7896;
-  --md-code-hl-operator-color:   var(--mr-amber-bright);
-
-  --md-admonition-bg-color:      var(--mr-d-bg-2);
-  --md-footer-bg-color:          #0A1424;
-  --md-footer-bg-color--dark:    #050D18;
-}
-
-/* ============================================================
-   Typography polish (both schemes)
-   ============================================================ */
-.md-typeset {
-  font-feature-settings: "ss01", "cv01", "cv11";
-  letter-spacing: -0.003em;
-  line-height: 1.65;
-}
-
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4 {
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  color: var(--mr-navy);
-}
-
-[data-md-color-scheme="slate"] .md-typeset h1,
-[data-md-color-scheme="slate"] .md-typeset h2,
-[data-md-color-scheme="slate"] .md-typeset h3,
-[data-md-color-scheme="slate"] .md-typeset h4 {
-  color: #FFFFFF;
-}
-
-.md-typeset h1 {
-  font-size: 2.1rem;
-  margin-top: 0.2em;
-  border-bottom: 1px solid var(--mr-rule-light);
-  padding-bottom: 0.4em;
-}
-
-[data-md-color-scheme="slate"] .md-typeset h1 {
-  border-bottom-color: var(--mr-d-rule);
-}
-
-.md-typeset h2 {
-  font-size: 1.45rem;
-  margin-top: 2em;
-}
-
-.md-typeset h3 {
-  font-size: 1.15rem;
-}
-
-/* Tabular figures */
-.md-typeset table:not([class]) td {
-  font-variant-numeric: tabular-nums;
-}
-
-/* ============================================================
-   Header
-   ============================================================ */
-.md-header {
-  border-bottom: 1px solid rgba(255, 184, 0, 0.25);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
-}
-
-.md-header__title {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-/* ============================================================
-   Sidebar nav
-   ============================================================ */
-.md-nav__title {
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  color: var(--md-default-fg-color--lighter);
-}
-
-.md-nav__link--active,
-.md-nav__link--active code {
-  color: var(--mr-amber) !important;
-  font-weight: 600;
-}
-
-[data-md-color-scheme="slate"] .md-nav__link--active {
-  color: var(--mr-amber-bright) !important;
-}
-
-/* Subtle amber bar on the active section */
-.md-nav__item--active > .md-nav__link {
-  position: relative;
-}
-
-/* ============================================================
-   Code blocks
-   ============================================================ */
-.md-typeset pre > code {
-  border-radius: 6px;
-  border: 1px solid var(--mr-rule-light);
-}
-
-[data-md-color-scheme="slate"] .md-typeset pre > code {
-  border-color: rgba(255, 184, 0, 0.10);
-}
-
-.md-typeset code {
-  font-feature-settings: "ss01", "ss02", "ss03";
-  border-radius: 3px;
-  padding: 0.1em 0.35em;
-  font-size: 0.86em;
-}
-
-.md-typeset .highlight .filename {
-  background: var(--md-code-bg-color);
-  border-bottom: 1px solid var(--mr-amber);
-  color: var(--mr-amber);
-  font-family: var(--md-code-font);
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-/* ============================================================
-   Admonitions — accent stripe, light cards
-   ============================================================ */
-.md-typeset .admonition,
-.md-typeset details {
-  border-left-width: 3px;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(26, 47, 79, 0.04);
-}
-
-[data-md-color-scheme="slate"] .md-typeset .admonition,
-[data-md-color-scheme="slate"] .md-typeset details {
-  box-shadow: none;
-}
-
-/* ============================================================
-   Tables — clean, tabular, restrained
-   ============================================================ */
-.md-typeset table:not([class]) {
-  border: 1px solid var(--mr-rule-light);
-  border-radius: 4px;
-  overflow: hidden;
-  font-size: 0.82rem;
-  box-shadow: 0 1px 2px rgba(26, 47, 79, 0.03);
-}
-
-[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
-  border-color: var(--mr-d-rule);
-  box-shadow: none;
-}
-
-.md-typeset table:not([class]) th {
-  background: var(--mr-navy);
-  color: #FFFFFF;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-}
-
-[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
-  background: var(--mr-d-bg-3);
-}
-
-/* ============================================================
-   Hero (homepage)
-   Light, airy, with a single amber rule.
-   ============================================================ */
+/* ---------- Hero block ---------- */
 .mr-hero {
-  margin: 1rem 0 2.5rem;
-  padding: 2.5rem 2rem;
-  background: var(--mr-paper);
-  border: 1px solid var(--mr-rule-light);
-  border-left: 3px solid var(--mr-amber);
+  margin: 1rem 0 2rem;
+  padding: 2.25rem 2rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 3px solid var(--md-primary-fg-color);
   border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(26, 47, 79, 0.05);
-}
-
-[data-md-color-scheme="slate"] .mr-hero {
-  background: var(--mr-d-bg-2);
-  border-color: var(--mr-d-rule);
-  box-shadow: none;
+  background: var(--md-default-bg-color);
 }
 
 .mr-hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: inline-block;
   font-family: var(--md-code-font);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--mr-amber);
+  color: var(--md-primary-fg-color);
   margin: 0 0 0.6rem;
-}
-
-.mr-hero__eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 6px; height: 6px;
-  background: var(--mr-amber);
-  border-radius: 1px;
 }
 
 .mr-hero__title {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: var(--mr-navy);
   margin: 0 0 0.6rem;
-}
-
-[data-md-color-scheme="slate"] .mr-hero__title {
-  color: #FFFFFF;
 }
 
 .mr-hero__subtitle {
   font-size: 1.05rem;
-  color: var(--mr-text-soft);
+  color: var(--md-default-fg-color--light);
   max-width: 56ch;
   margin: 0 0 1.4rem;
 }
 
-[data-md-color-scheme="slate"] .mr-hero__subtitle {
-  color: #C9D5E6;
-}
-
 .mr-hero__cta {
   display: inline-block;
-  padding: 0.65rem 1.2rem;
-  background: var(--mr-navy);
-  color: #FFFFFF !important;
+  padding: 0.6rem 1.15rem;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color) !important;
   border-radius: 3px;
   font-weight: 600;
   font-size: 0.88rem;
-  letter-spacing: 0.02em;
   text-decoration: none !important;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
 .mr-hero__cta:hover {
-  background: var(--mr-amber);
+  background: var(--md-accent-fg-color);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(178, 125, 0, 0.25);
 }
 
 .mr-hero__cta--ghost {
   margin-left: 0.6rem;
   background: transparent;
-  color: var(--mr-navy) !important;
-  border: 1px solid var(--mr-navy);
+  color: var(--md-primary-fg-color) !important;
+  border: 1px solid var(--md-primary-fg-color);
 }
 
 .mr-hero__cta--ghost:hover {
-  background: var(--mr-navy);
-  color: #FFFFFF !important;
-  box-shadow: none;
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color) !important;
 }
 
-[data-md-color-scheme="slate"] .mr-hero__cta {
-  background: var(--mr-amber-bright);
-  color: var(--mr-d-bg) !important;
+/* ---------- Stat strip ---------- */
+.mr-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
+  margin: 2rem 0;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
 }
 
-[data-md-color-scheme="slate"] .mr-hero__cta:hover {
-  background: #FFCB47;
+.mr-stat {
+  padding: 1rem 1.2rem;
+  border-right: 1px solid var(--md-default-fg-color--lightest);
 }
 
-[data-md-color-scheme="slate"] .mr-hero__cta--ghost {
-  background: transparent;
-  color: var(--mr-amber-bright) !important;
-  border-color: var(--mr-amber-bright);
+.mr-stat:last-child { border-right: none; }
+
+.mr-stat__value {
+  font-family: var(--md-code-font);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+  line-height: 1;
+  margin: 0 0 0.2rem;
 }
 
-[data-md-color-scheme="slate"] .mr-hero__cta--ghost:hover {
-  background: rgba(255, 184, 0, 0.12);
-  color: var(--mr-amber-bright) !important;
+.mr-stat__label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--light);
+  margin: 0;
 }
 
-/* ============================================================
-   Phase cards grid
-   ============================================================ */
+/* ---------- Phase cards grid ---------- */
 .mr-phases {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -418,21 +112,14 @@
 .mr-phase {
   display: block;
   padding: 1.2rem 1.3rem;
-  border: 1px solid var(--mr-rule-light);
+  border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 6px;
-  background: var(--mr-paper);
+  background: var(--md-default-bg-color);
   text-decoration: none !important;
   color: inherit !important;
   transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(26, 47, 79, 0.04);
-}
-
-[data-md-color-scheme="slate"] .mr-phase {
-  background: var(--mr-d-bg-2);
-  border-color: var(--mr-d-rule);
-  box-shadow: none;
 }
 
 .mr-phase::before {
@@ -440,18 +127,18 @@
   position: absolute;
   left: 0; top: 0; bottom: 0;
   width: 3px;
-  background: var(--mr-text-faint);
+  background: var(--md-default-fg-color--lighter);
   transition: background 0.15s ease, width 0.15s ease;
 }
 
 .mr-phase:hover {
-  border-color: var(--mr-amber);
+  border-color: var(--md-primary-fg-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(26, 47, 79, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .mr-phase:hover::before {
-  background: var(--mr-amber);
+  background: var(--md-primary-fg-color);
   width: 4px;
 }
 
@@ -460,7 +147,7 @@
   font-family: var(--md-code-font);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
-  color: var(--mr-amber);
+  color: var(--md-primary-fg-color);
   text-transform: uppercase;
   margin: 0 0 0.4rem;
 }
@@ -471,73 +158,21 @@
   font-weight: 600;
   letter-spacing: -0.01em;
   margin: 0 0 0.5rem;
-  color: var(--mr-navy);
-}
-
-[data-md-color-scheme="slate"] .mr-phase__title {
-  color: #FFFFFF;
+  color: var(--md-default-fg-color);
 }
 
 .mr-phase__desc {
   display: block;
   font-size: 0.84rem;
-  color: var(--mr-text-soft);
+  color: var(--md-default-fg-color--light);
   line-height: 1.55;
   margin: 0 0 0.7rem;
-}
-
-[data-md-color-scheme="slate"] .mr-phase__desc {
-  color: #C9D5E6;
 }
 
 .mr-phase__meta {
   display: block;
   font-family: var(--md-code-font);
   font-size: 0.7rem;
-  color: var(--mr-text-faint);
+  color: var(--md-default-fg-color--light);
   letter-spacing: 0.04em;
-}
-
-/* ============================================================
-   Stat strip
-   ============================================================ */
-.mr-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0;
-  margin: 2rem 0;
-  border-top: 1px solid var(--mr-rule-light);
-  border-bottom: 1px solid var(--mr-rule-light);
-}
-
-[data-md-color-scheme="slate"] .mr-stats {
-  border-color: var(--mr-d-rule);
-}
-
-.mr-stat {
-  padding: 1rem 1.2rem;
-  border-right: 1px solid var(--mr-rule-light);
-}
-
-[data-md-color-scheme="slate"] .mr-stat {
-  border-right-color: var(--mr-d-rule);
-}
-
-.mr-stat:last-child { border-right: none; }
-
-.mr-stat__value {
-  font-family: var(--md-code-font);
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--mr-amber);
-  line-height: 1;
-  margin: 0 0 0.2rem;
-}
-
-.mr-stat__label {
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--mr-text-faint);
-  margin: 0;
 }

@@ -7,9 +7,6 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  font:
-    text: IBM Plex Sans
-    code: JetBrains Mono
   features:
     - navigation.top
     - navigation.indexes
@@ -26,15 +23,15 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: custom
-      accent: amber
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: custom
-      accent: amber
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
