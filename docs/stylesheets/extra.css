@@ -1,95 +1,138 @@
 /* ============================================================
-   Market Risk BI Training — Bloomberg-terminal palette
-   Navy #0B1929  ·  Amber #FFB800  ·  IBM Plex Sans + JetBrains Mono
+   Market Risk BI Training — Light-first study palette
+   Warm cream background, deep navy chrome, amber accents.
+   IBM Plex Sans + JetBrains Mono.
    ============================================================ */
 
 :root {
-  --mr-navy:        #0B1929;
-  --mr-navy-2:      #11233A;
-  --mr-navy-3:      #1A3354;
-  --mr-amber:       #FFB800;
-  --mr-amber-soft:  #FFCB47;
-  --mr-amber-dim:   rgba(255, 184, 0, 0.12);
-  --mr-electric:    #00C2FF;
-  --mr-text-dim:    #8FA3BF;
-  --mr-rule:        rgba(143, 163, 191, 0.18);
+  /* Brand */
+  --mr-navy:        #1A2F4F;   /* header, headings */
+  --mr-navy-deep:   #0F1F36;   /* footer */
+  --mr-navy-soft:   #2A3F5C;   /* secondary text */
+  --mr-amber:       #B27D00;   /* accent on light bg (WCAG AA on cream) */
+  --mr-amber-warm:  #D9A300;   /* hero highlights, hover */
+  --mr-amber-bright:#FFB800;   /* dark-mode accent */
+  --mr-amber-soft:  rgba(178, 125, 0, 0.10);
+
+  /* Light surfaces */
+  --mr-cream:       #FAF8F3;   /* page bg — warm off-white */
+  --mr-paper:       #FFFFFF;   /* cards, code wells */
+  --mr-rule-light:  rgba(26, 47, 79, 0.10);
+  --mr-text:        #1F2A3D;
+  --mr-text-soft:   #4A5872;
+  --mr-text-faint:  #7A8699;
+
+  /* Dark surfaces (for slate scheme) */
+  --mr-d-bg:        #14202F;
+  --mr-d-bg-2:      #1B2B3F;
+  --mr-d-bg-3:      #243650;
+  --mr-d-text:      #E5ECF5;
+  --mr-d-rule:      rgba(143, 163, 191, 0.18);
 }
 
-/* ---------- Dark scheme (primary) ---------- */
+/* ============================================================
+   LIGHT scheme — primary
+   ============================================================ */
+[data-md-color-scheme="default"] {
+  /* Surfaces */
+  --md-default-bg-color:         var(--mr-cream);
+  --md-default-bg-color--light:  var(--mr-paper);
+  --md-default-bg-color--lighter:#FFFFFF;
+  --md-default-bg-color--lightest:#FFFFFF;
+
+  /* Text */
+  --md-default-fg-color:         var(--mr-text);
+  --md-default-fg-color--light:  var(--mr-text-soft);
+  --md-default-fg-color--lighter:var(--mr-text-faint);
+  --md-default-fg-color--lightest:#A2AEC0;
+
+  /* Header / nav chrome */
+  --md-primary-fg-color:         var(--mr-navy);
+  --md-primary-fg-color--light:  #2D4670;
+  --md-primary-fg-color--dark:   #0F1F36;
+  --md-primary-bg-color:         #FFFFFF;
+  --md-primary-bg-color--light:  rgba(255, 255, 255, 0.8);
+
+  /* Accent */
+  --md-accent-fg-color:               var(--mr-amber);
+  --md-accent-fg-color--transparent:  var(--mr-amber-soft);
+
+  /* Links */
+  --md-typeset-a-color:          var(--mr-navy);
+  --md-typeset-mark-color:       rgba(255, 184, 0, 0.30);
+
+  /* Code (light: warm beige well, navy text, refined syntax colors) */
+  --md-code-bg-color:            #F4EFE3;
+  --md-code-fg-color:            #1F2A3D;
+  --md-code-hl-color:            rgba(178, 125, 0, 0.18);
+  --md-code-hl-keyword-color:    #B27D00;
+  --md-code-hl-function-color:   #1A4A8E;
+  --md-code-hl-string-color:     #2E7D5A;
+  --md-code-hl-number-color:     #B85C2C;
+  --md-code-hl-comment-color:    #7A8699;
+  --md-code-hl-name-color:       #1F2A3D;
+  --md-code-hl-operator-color:   #B27D00;
+  --md-code-hl-punctuation-color:#4A5872;
+
+  /* Admonitions */
+  --md-admonition-bg-color:      var(--mr-paper);
+  --md-admonition-fg-color:      var(--mr-text);
+
+  /* Footer */
+  --md-footer-bg-color:          var(--mr-navy-deep);
+  --md-footer-bg-color--dark:    #050D18;
+}
+
+/* ============================================================
+   DARK scheme — secondary (toggle)
+   Toned down from the prior pure-navy to feel less aggressive.
+   ============================================================ */
 [data-md-color-scheme="slate"] {
   --md-hue: 215;
 
-  --md-default-bg-color:        var(--mr-navy);
-  --md-default-bg-color--light:  #0F1F36;
-  --md-default-bg-color--lighter:#152A47;
-  --md-default-bg-color--lightest:#1B345A;
+  --md-default-bg-color:         var(--mr-d-bg);
+  --md-default-bg-color--light:  var(--mr-d-bg-2);
+  --md-default-bg-color--lighter:var(--mr-d-bg-3);
+  --md-default-bg-color--lightest:#2D4060;
 
-  --md-default-fg-color:         #E5ECF5;
+  --md-default-fg-color:         var(--mr-d-text);
   --md-default-fg-color--light:  #C9D5E6;
   --md-default-fg-color--lighter:#A4B5CC;
   --md-default-fg-color--lightest:#6A7E99;
 
-  --md-primary-fg-color:         #050D18;
+  --md-primary-fg-color:         var(--mr-navy-deep);
   --md-primary-fg-color--light:  var(--mr-navy);
-  --md-primary-fg-color--dark:   #02060C;
-  --md-primary-bg-color:         #FFFFFF;
-  --md-primary-bg-color--light:  rgba(255, 255, 255, 0.85);
-
-  --md-accent-fg-color:               var(--mr-amber);
-  --md-accent-fg-color--transparent:  var(--mr-amber-dim);
-  --md-accent-bg-color:               var(--mr-navy);
-  --md-accent-bg-color--light:        var(--mr-navy-2);
-
-  --md-typeset-a-color:          var(--mr-amber);
-  --md-typeset-mark-color:       rgba(255, 184, 0, 0.28);
-
-  --md-code-bg-color:            #0A1424;
-  --md-code-fg-color:            #DCE6F2;
-  --md-code-hl-color:            rgba(255, 184, 0, 0.18);
-  --md-code-hl-keyword-color:    #FFB800;
-  --md-code-hl-function-color:   #00C2FF;
-  --md-code-hl-string-color:     #7BD88F;
-  --md-code-hl-number-color:     #FF8E72;
-  --md-code-hl-comment-color:    #5F7896;
-  --md-code-hl-name-color:       #DCE6F2;
-  --md-code-hl-operator-color:   var(--mr-amber);
-  --md-code-hl-punctuation-color:#A4B5CC;
-
-  --md-admonition-bg-color:      #0F1F36;
-  --md-admonition-fg-color:      #E5ECF5;
-
-  --md-footer-bg-color:          #050D18;
-  --md-footer-bg-color--dark:    #02060C;
-}
-
-/* ---------- Light scheme (secondary) ---------- */
-[data-md-color-scheme="default"] {
-  --md-default-bg-color:         #FAFBFC;
-  --md-default-fg-color:         #11233A;
-  --md-default-fg-color--light:  #2A3F5C;
-  --md-default-fg-color--lighter:#5A6E89;
-  --md-default-fg-color--lightest:#8FA3BF;
-
-  --md-primary-fg-color:         var(--mr-navy);
-  --md-primary-fg-color--light:  var(--mr-navy-3);
   --md-primary-fg-color--dark:   #050D18;
   --md-primary-bg-color:         #FFFFFF;
 
-  --md-accent-fg-color:               #B27D00;
-  --md-accent-fg-color--transparent:  rgba(178, 125, 0, 0.10);
+  --md-accent-fg-color:               var(--mr-amber-bright);
+  --md-accent-fg-color--transparent:  rgba(255, 184, 0, 0.12);
 
-  --md-typeset-a-color:          #1A3354;
-  --md-typeset-mark-color:       rgba(255, 184, 0, 0.30);
+  --md-typeset-a-color:          var(--mr-amber-bright);
+  --md-typeset-mark-color:       rgba(255, 184, 0, 0.28);
 
-  --md-code-bg-color:            #F1F4F9;
-  --md-code-fg-color:            #11233A;
-  --md-code-hl-color:            rgba(178, 125, 0, 0.15);
+  --md-code-bg-color:            #0F1B2C;
+  --md-code-fg-color:            #DCE6F2;
+  --md-code-hl-color:            rgba(255, 184, 0, 0.18);
+  --md-code-hl-keyword-color:    #FFB800;
+  --md-code-hl-function-color:   #4FB8FF;
+  --md-code-hl-string-color:     #7BD88F;
+  --md-code-hl-number-color:     #FF9E7E;
+  --md-code-hl-comment-color:    #5F7896;
+  --md-code-hl-operator-color:   var(--mr-amber-bright);
+
+  --md-admonition-bg-color:      var(--mr-d-bg-2);
+  --md-footer-bg-color:          #0A1424;
+  --md-footer-bg-color--dark:    #050D18;
 }
 
-/* ---------- Typography polish ---------- */
+/* ============================================================
+   Typography polish (both schemes)
+   ============================================================ */
 .md-typeset {
   font-feature-settings: "ss01", "cv01", "cv11";
-  letter-spacing: -0.005em;
+  letter-spacing: -0.003em;
+  line-height: 1.65;
 }
 
 .md-typeset h1,
@@ -98,36 +141,47 @@
 .md-typeset h4 {
   font-weight: 600;
   letter-spacing: -0.015em;
+  color: var(--mr-navy);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2,
+[data-md-color-scheme="slate"] .md-typeset h3,
+[data-md-color-scheme="slate"] .md-typeset h4 {
+  color: #FFFFFF;
 }
 
 .md-typeset h1 {
   font-size: 2.1rem;
   margin-top: 0.2em;
-  border-bottom: 1px solid var(--mr-rule);
+  border-bottom: 1px solid var(--mr-rule-light);
   padding-bottom: 0.4em;
 }
 
 [data-md-color-scheme="slate"] .md-typeset h1 {
-  color: #FFFFFF;
+  border-bottom-color: var(--mr-d-rule);
 }
 
-.md-typeset code,
-.md-typeset pre {
-  font-feature-settings: "ss01", "ss02", "ss03";
+.md-typeset h2 {
+  font-size: 1.45rem;
+  margin-top: 2em;
 }
 
-/* Tabular figures for tables and inline numbers */
+.md-typeset h3 {
+  font-size: 1.15rem;
+}
+
+/* Tabular figures */
 .md-typeset table:not([class]) td {
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Header & nav ---------- */
+/* ============================================================
+   Header
+   ============================================================ */
 .md-header {
-  border-bottom: 1px solid rgba(255, 184, 0, 0.18);
-}
-
-[data-md-color-scheme="slate"] .md-header {
-  background: var(--md-primary-fg-color);
+  border-bottom: 1px solid rgba(255, 184, 0, 0.25);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
 }
 
 .md-header__title {
@@ -135,18 +189,9 @@
   letter-spacing: -0.01em;
 }
 
-/* Make the active nav item amber */
-.md-nav__link--active,
-.md-nav__link--active code {
-  color: var(--mr-amber) !important;
-  font-weight: 600;
-}
-
-[data-md-color-scheme="default"] .md-nav__link--active {
-  color: var(--mr-navy) !important;
-}
-
-/* Section labels in sidebar — tighter, more terminal-like */
+/* ============================================================
+   Sidebar nav
+   ============================================================ */
 .md-nav__title {
   font-weight: 600;
   text-transform: uppercase;
@@ -155,15 +200,38 @@
   color: var(--md-default-fg-color--lighter);
 }
 
-/* ---------- Code blocks: terminal feel ---------- */
+.md-nav__link--active,
+.md-nav__link--active code {
+  color: var(--mr-amber) !important;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  color: var(--mr-amber-bright) !important;
+}
+
+/* Subtle amber bar on the active section */
+.md-nav__item--active > .md-nav__link {
+  position: relative;
+}
+
+/* ============================================================
+   Code blocks
+   ============================================================ */
 .md-typeset pre > code {
   border-radius: 6px;
-  border: 1px solid var(--mr-rule);
+  border: 1px solid var(--mr-rule-light);
 }
 
 [data-md-color-scheme="slate"] .md-typeset pre > code {
   border-color: rgba(255, 184, 0, 0.10);
-  box-shadow: inset 0 0 0 1px rgba(0, 194, 255, 0.04);
+}
+
+.md-typeset code {
+  font-feature-settings: "ss01", "ss02", "ss03";
+  border-radius: 3px;
+  padding: 0.1em 0.35em;
+  font-size: 0.86em;
 }
 
 .md-typeset .highlight .filename {
@@ -176,27 +244,39 @@
   text-transform: uppercase;
 }
 
-/* ---------- Admonitions — accent stripe ---------- */
+/* ============================================================
+   Admonitions — accent stripe, light cards
+   ============================================================ */
 .md-typeset .admonition,
 .md-typeset details {
   border-left-width: 3px;
   border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(26, 47, 79, 0.04);
 }
 
-[data-md-color-scheme="slate"] .md-typeset .admonition {
-  background: var(--mr-navy-2);
+[data-md-color-scheme="slate"] .md-typeset .admonition,
+[data-md-color-scheme="slate"] .md-typeset details {
+  box-shadow: none;
 }
 
-/* ---------- Tables ---------- */
+/* ============================================================
+   Tables — clean, tabular, restrained
+   ============================================================ */
 .md-typeset table:not([class]) {
-  border: 1px solid var(--mr-rule);
+  border: 1px solid var(--mr-rule-light);
   border-radius: 4px;
   overflow: hidden;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
+  box-shadow: 0 1px 2px rgba(26, 47, 79, 0.03);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  border-color: var(--mr-d-rule);
+  box-shadow: none;
 }
 
 .md-typeset table:not([class]) th {
-  background: var(--mr-navy-3);
+  background: var(--mr-navy);
   color: #FFFFFF;
   font-weight: 600;
   text-transform: uppercase;
@@ -204,25 +284,28 @@
   letter-spacing: 0.06em;
 }
 
-[data-md-color-scheme="default"] .md-typeset table:not([class]) th {
-  background: var(--mr-navy);
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: var(--mr-d-bg-3);
 }
 
-/* ---------- Hero (used by index.md) ---------- */
+/* ============================================================
+   Hero (homepage)
+   Light, airy, with a single amber rule.
+   ============================================================ */
 .mr-hero {
   margin: 1rem 0 2.5rem;
   padding: 2.5rem 2rem;
-  border: 1px solid var(--mr-rule);
+  background: var(--mr-paper);
+  border: 1px solid var(--mr-rule-light);
   border-left: 3px solid var(--mr-amber);
   border-radius: 6px;
-  background:
-    linear-gradient(135deg, rgba(255, 184, 0, 0.04), rgba(0, 194, 255, 0.02));
+  box-shadow: 0 1px 3px rgba(26, 47, 79, 0.05);
 }
 
 [data-md-color-scheme="slate"] .mr-hero {
-  background:
-    linear-gradient(135deg, rgba(255, 184, 0, 0.06), rgba(0, 194, 255, 0.03)),
-    var(--mr-navy-2);
+  background: var(--mr-d-bg-2);
+  border-color: var(--mr-d-rule);
+  box-shadow: none;
 }
 
 .mr-hero__eyebrow {
@@ -243,14 +326,14 @@
   width: 6px; height: 6px;
   background: var(--mr-amber);
   border-radius: 1px;
-  box-shadow: 0 0 8px var(--mr-amber);
 }
 
 .mr-hero__title {
   font-size: 2.4rem;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.02em;
+  color: var(--mr-navy);
   margin: 0 0 0.6rem;
 }
 
@@ -260,42 +343,70 @@
 
 .mr-hero__subtitle {
   font-size: 1.05rem;
-  color: var(--md-default-fg-color--light);
+  color: var(--mr-text-soft);
   max-width: 56ch;
   margin: 0 0 1.4rem;
+}
+
+[data-md-color-scheme="slate"] .mr-hero__subtitle {
+  color: #C9D5E6;
 }
 
 .mr-hero__cta {
   display: inline-block;
   padding: 0.65rem 1.2rem;
-  background: var(--mr-amber);
-  color: var(--mr-navy) !important;
+  background: var(--mr-navy);
+  color: #FFFFFF !important;
   border-radius: 3px;
   font-weight: 600;
   font-size: 0.88rem;
   letter-spacing: 0.02em;
   text-decoration: none !important;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .mr-hero__cta:hover {
+  background: var(--mr-amber);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(178, 125, 0, 0.25);
 }
 
 .mr-hero__cta--ghost {
   margin-left: 0.6rem;
   background: transparent;
-  color: var(--mr-amber) !important;
-  border: 1px solid var(--mr-amber);
+  color: var(--mr-navy) !important;
+  border: 1px solid var(--mr-navy);
 }
 
 .mr-hero__cta--ghost:hover {
-  background: var(--mr-amber-dim);
+  background: var(--mr-navy);
+  color: #FFFFFF !important;
   box-shadow: none;
 }
 
-/* ---------- Phase cards grid ---------- */
+[data-md-color-scheme="slate"] .mr-hero__cta {
+  background: var(--mr-amber-bright);
+  color: var(--mr-d-bg) !important;
+}
+
+[data-md-color-scheme="slate"] .mr-hero__cta:hover {
+  background: #FFCB47;
+}
+
+[data-md-color-scheme="slate"] .mr-hero__cta--ghost {
+  background: transparent;
+  color: var(--mr-amber-bright) !important;
+  border-color: var(--mr-amber-bright);
+}
+
+[data-md-color-scheme="slate"] .mr-hero__cta--ghost:hover {
+  background: rgba(255, 184, 0, 0.12);
+  color: var(--mr-amber-bright) !important;
+}
+
+/* ============================================================
+   Phase cards grid
+   ============================================================ */
 .mr-phases {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -306,14 +417,21 @@
 .mr-phase {
   display: block;
   padding: 1.2rem 1.3rem;
-  border: 1px solid var(--mr-rule);
+  border: 1px solid var(--mr-rule-light);
   border-radius: 6px;
-  background: var(--md-default-bg-color--light, transparent);
+  background: var(--mr-paper);
   text-decoration: none !important;
   color: inherit !important;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 1px 2px rgba(26, 47, 79, 0.04);
+}
+
+[data-md-color-scheme="slate"] .mr-phase {
+  background: var(--mr-d-bg-2);
+  border-color: var(--mr-d-rule);
+  box-shadow: none;
 }
 
 .mr-phase::before {
@@ -321,13 +439,14 @@
   position: absolute;
   left: 0; top: 0; bottom: 0;
   width: 3px;
-  background: var(--mr-text-dim);
+  background: var(--mr-text-faint);
   transition: background 0.15s ease, width 0.15s ease;
 }
 
 .mr-phase:hover {
   border-color: var(--mr-amber);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 47, 79, 0.08);
 }
 
 .mr-phase:hover::before {
@@ -336,6 +455,7 @@
 }
 
 .mr-phase__num {
+  display: block;
   font-family: var(--md-code-font);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
@@ -345,40 +465,61 @@
 }
 
 .mr-phase__title {
+  display: block;
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   margin: 0 0 0.5rem;
-  color: var(--md-default-fg-color);
+  color: var(--mr-navy);
+}
+
+[data-md-color-scheme="slate"] .mr-phase__title {
+  color: #FFFFFF;
 }
 
 .mr-phase__desc {
+  display: block;
   font-size: 0.84rem;
-  color: var(--md-default-fg-color--light);
-  line-height: 1.5;
+  color: var(--mr-text-soft);
+  line-height: 1.55;
   margin: 0 0 0.7rem;
 }
 
+[data-md-color-scheme="slate"] .mr-phase__desc {
+  color: #C9D5E6;
+}
+
 .mr-phase__meta {
+  display: block;
   font-family: var(--md-code-font);
   font-size: 0.7rem;
-  color: var(--md-default-fg-color--lighter);
+  color: var(--mr-text-faint);
   letter-spacing: 0.04em;
 }
 
-/* ---------- Stat strip on homepage ---------- */
+/* ============================================================
+   Stat strip
+   ============================================================ */
 .mr-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0;
   margin: 2rem 0;
-  border-top: 1px solid var(--mr-rule);
-  border-bottom: 1px solid var(--mr-rule);
+  border-top: 1px solid var(--mr-rule-light);
+  border-bottom: 1px solid var(--mr-rule-light);
+}
+
+[data-md-color-scheme="slate"] .mr-stats {
+  border-color: var(--mr-d-rule);
 }
 
 .mr-stat {
   padding: 1rem 1.2rem;
-  border-right: 1px solid var(--mr-rule);
+  border-right: 1px solid var(--mr-rule-light);
+}
+
+[data-md-color-scheme="slate"] .mr-stat {
+  border-right-color: var(--mr-d-rule);
 }
 
 .mr-stat:last-child { border-right: none; }
@@ -396,6 +537,6 @@
   font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--md-default-fg-color--lighter);
+  color: var(--mr-text-faint);
   margin: 0;
 }
