@@ -15,8 +15,9 @@
   --mr-amber-soft:  rgba(178, 125, 0, 0.10);
 
   /* Light surfaces */
-  --mr-cream:       #FAF8F3;   /* page bg — warm off-white */
-  --mr-paper:       #FFFFFF;   /* cards, code wells */
+  --mr-cream:       #FFFFFF;   /* page bg — pure white */
+  --mr-paper:       #FFFFFF;   /* cards */
+  --mr-surface-2:   #F5F7FA;   /* code wells, table stripes */
   --mr-rule-light:  rgba(26, 47, 79, 0.10);
   --mr-text:        #1F2A3D;
   --mr-text-soft:   #4A5872;
@@ -61,8 +62,8 @@
   --md-typeset-a-color:          var(--mr-navy);
   --md-typeset-mark-color:       rgba(255, 184, 0, 0.30);
 
-  /* Code (light: warm beige well, navy text, refined syntax colors) */
-  --md-code-bg-color:            #F4EFE3;
+  /* Code (light: cool gray well, navy text, refined syntax colors) */
+  --md-code-bg-color:            var(--mr-surface-2);
   --md-code-fg-color:            #1F2A3D;
   --md-code-hl-color:            rgba(178, 125, 0, 0.18);
   --md-code-hl-keyword-color:    #B27D00;
