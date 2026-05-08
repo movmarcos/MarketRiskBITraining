@@ -1,0 +1,401 @@
+/* ============================================================
+   Market Risk BI Training — Bloomberg-terminal palette
+   Navy #0B1929  ·  Amber #FFB800  ·  IBM Plex Sans + JetBrains Mono
+   ============================================================ */
+
+:root {
+  --mr-navy:        #0B1929;
+  --mr-navy-2:      #11233A;
+  --mr-navy-3:      #1A3354;
+  --mr-amber:       #FFB800;
+  --mr-amber-soft:  #FFCB47;
+  --mr-amber-dim:   rgba(255, 184, 0, 0.12);
+  --mr-electric:    #00C2FF;
+  --mr-text-dim:    #8FA3BF;
+  --mr-rule:        rgba(143, 163, 191, 0.18);
+}
+
+/* ---------- Dark scheme (primary) ---------- */
+[data-md-color-scheme="slate"] {
+  --md-hue: 215;
+
+  --md-default-bg-color:        var(--mr-navy);
+  --md-default-bg-color--light:  #0F1F36;
+  --md-default-bg-color--lighter:#152A47;
+  --md-default-bg-color--lightest:#1B345A;
+
+  --md-default-fg-color:         #E5ECF5;
+  --md-default-fg-color--light:  #C9D5E6;
+  --md-default-fg-color--lighter:#A4B5CC;
+  --md-default-fg-color--lightest:#6A7E99;
+
+  --md-primary-fg-color:         #050D18;
+  --md-primary-fg-color--light:  var(--mr-navy);
+  --md-primary-fg-color--dark:   #02060C;
+  --md-primary-bg-color:         #FFFFFF;
+  --md-primary-bg-color--light:  rgba(255, 255, 255, 0.85);
+
+  --md-accent-fg-color:               var(--mr-amber);
+  --md-accent-fg-color--transparent:  var(--mr-amber-dim);
+  --md-accent-bg-color:               var(--mr-navy);
+  --md-accent-bg-color--light:        var(--mr-navy-2);
+
+  --md-typeset-a-color:          var(--mr-amber);
+  --md-typeset-mark-color:       rgba(255, 184, 0, 0.28);
+
+  --md-code-bg-color:            #0A1424;
+  --md-code-fg-color:            #DCE6F2;
+  --md-code-hl-color:            rgba(255, 184, 0, 0.18);
+  --md-code-hl-keyword-color:    #FFB800;
+  --md-code-hl-function-color:   #00C2FF;
+  --md-code-hl-string-color:     #7BD88F;
+  --md-code-hl-number-color:     #FF8E72;
+  --md-code-hl-comment-color:    #5F7896;
+  --md-code-hl-name-color:       #DCE6F2;
+  --md-code-hl-operator-color:   var(--mr-amber);
+  --md-code-hl-punctuation-color:#A4B5CC;
+
+  --md-admonition-bg-color:      #0F1F36;
+  --md-admonition-fg-color:      #E5ECF5;
+
+  --md-footer-bg-color:          #050D18;
+  --md-footer-bg-color--dark:    #02060C;
+}
+
+/* ---------- Light scheme (secondary) ---------- */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color:         #FAFBFC;
+  --md-default-fg-color:         #11233A;
+  --md-default-fg-color--light:  #2A3F5C;
+  --md-default-fg-color--lighter:#5A6E89;
+  --md-default-fg-color--lightest:#8FA3BF;
+
+  --md-primary-fg-color:         var(--mr-navy);
+  --md-primary-fg-color--light:  var(--mr-navy-3);
+  --md-primary-fg-color--dark:   #050D18;
+  --md-primary-bg-color:         #FFFFFF;
+
+  --md-accent-fg-color:               #B27D00;
+  --md-accent-fg-color--transparent:  rgba(178, 125, 0, 0.10);
+
+  --md-typeset-a-color:          #1A3354;
+  --md-typeset-mark-color:       rgba(255, 184, 0, 0.30);
+
+  --md-code-bg-color:            #F1F4F9;
+  --md-code-fg-color:            #11233A;
+  --md-code-hl-color:            rgba(178, 125, 0, 0.15);
+}
+
+/* ---------- Typography polish ---------- */
+.md-typeset {
+  font-feature-settings: "ss01", "cv01", "cv11";
+  letter-spacing: -0.005em;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.md-typeset h1 {
+  font-size: 2.1rem;
+  margin-top: 0.2em;
+  border-bottom: 1px solid var(--mr-rule);
+  padding-bottom: 0.4em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: #FFFFFF;
+}
+
+.md-typeset code,
+.md-typeset pre {
+  font-feature-settings: "ss01", "ss02", "ss03";
+}
+
+/* Tabular figures for tables and inline numbers */
+.md-typeset table:not([class]) td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Header & nav ---------- */
+.md-header {
+  border-bottom: 1px solid rgba(255, 184, 0, 0.18);
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  background: var(--md-primary-fg-color);
+}
+
+.md-header__title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Make the active nav item amber */
+.md-nav__link--active,
+.md-nav__link--active code {
+  color: var(--mr-amber) !important;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="default"] .md-nav__link--active {
+  color: var(--mr-navy) !important;
+}
+
+/* Section labels in sidebar — tighter, more terminal-like */
+.md-nav__title {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  color: var(--md-default-fg-color--lighter);
+}
+
+/* ---------- Code blocks: terminal feel ---------- */
+.md-typeset pre > code {
+  border-radius: 6px;
+  border: 1px solid var(--mr-rule);
+}
+
+[data-md-color-scheme="slate"] .md-typeset pre > code {
+  border-color: rgba(255, 184, 0, 0.10);
+  box-shadow: inset 0 0 0 1px rgba(0, 194, 255, 0.04);
+}
+
+.md-typeset .highlight .filename {
+  background: var(--md-code-bg-color);
+  border-bottom: 1px solid var(--mr-amber);
+  color: var(--mr-amber);
+  font-family: var(--md-code-font);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Admonitions — accent stripe ---------- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left-width: 3px;
+  border-radius: 4px;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .admonition {
+  background: var(--mr-navy-2);
+}
+
+/* ---------- Tables ---------- */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--mr-rule);
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 0.78rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--mr-navy-3);
+  color: #FFFFFF;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+}
+
+[data-md-color-scheme="default"] .md-typeset table:not([class]) th {
+  background: var(--mr-navy);
+}
+
+/* ---------- Hero (used by index.md) ---------- */
+.mr-hero {
+  margin: 1rem 0 2.5rem;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--mr-rule);
+  border-left: 3px solid var(--mr-amber);
+  border-radius: 6px;
+  background:
+    linear-gradient(135deg, rgba(255, 184, 0, 0.04), rgba(0, 194, 255, 0.02));
+}
+
+[data-md-color-scheme="slate"] .mr-hero {
+  background:
+    linear-gradient(135deg, rgba(255, 184, 0, 0.06), rgba(0, 194, 255, 0.03)),
+    var(--mr-navy-2);
+}
+
+.mr-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--md-code-font);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mr-amber);
+  margin: 0 0 0.6rem;
+}
+
+.mr-hero__eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--mr-amber);
+  border-radius: 1px;
+  box-shadow: 0 0 8px var(--mr-amber);
+}
+
+.mr-hero__title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.6rem;
+}
+
+[data-md-color-scheme="slate"] .mr-hero__title {
+  color: #FFFFFF;
+}
+
+.mr-hero__subtitle {
+  font-size: 1.05rem;
+  color: var(--md-default-fg-color--light);
+  max-width: 56ch;
+  margin: 0 0 1.4rem;
+}
+
+.mr-hero__cta {
+  display: inline-block;
+  padding: 0.65rem 1.2rem;
+  background: var(--mr-amber);
+  color: var(--mr-navy) !important;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mr-hero__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 184, 0, 0.3);
+}
+
+.mr-hero__cta--ghost {
+  margin-left: 0.6rem;
+  background: transparent;
+  color: var(--mr-amber) !important;
+  border: 1px solid var(--mr-amber);
+}
+
+.mr-hero__cta--ghost:hover {
+  background: var(--mr-amber-dim);
+  box-shadow: none;
+}
+
+/* ---------- Phase cards grid ---------- */
+.mr-phases {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.mr-phase {
+  display: block;
+  padding: 1.2rem 1.3rem;
+  border: 1px solid var(--mr-rule);
+  border-radius: 6px;
+  background: var(--md-default-bg-color--light, transparent);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mr-phase::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--mr-text-dim);
+  transition: background 0.15s ease, width 0.15s ease;
+}
+
+.mr-phase:hover {
+  border-color: var(--mr-amber);
+  transform: translateY(-2px);
+}
+
+.mr-phase:hover::before {
+  background: var(--mr-amber);
+  width: 4px;
+}
+
+.mr-phase__num {
+  font-family: var(--md-code-font);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--mr-amber);
+  text-transform: uppercase;
+  margin: 0 0 0.4rem;
+}
+
+.mr-phase__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+  color: var(--md-default-fg-color);
+}
+
+.mr-phase__desc {
+  font-size: 0.84rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.5;
+  margin: 0 0 0.7rem;
+}
+
+.mr-phase__meta {
+  font-family: var(--md-code-font);
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--lighter);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Stat strip on homepage ---------- */
+.mr-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
+  margin: 2rem 0;
+  border-top: 1px solid var(--mr-rule);
+  border-bottom: 1px solid var(--mr-rule);
+}
+
+.mr-stat {
+  padding: 1rem 1.2rem;
+  border-right: 1px solid var(--mr-rule);
+}
+
+.mr-stat:last-child { border-right: none; }
+
+.mr-stat__value {
+  font-family: var(--md-code-font);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--mr-amber);
+  line-height: 1;
+  margin: 0 0 0.2rem;
+}
+
+.mr-stat__label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--lighter);
+  margin: 0;
+}

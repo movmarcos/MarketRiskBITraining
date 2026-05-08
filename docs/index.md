@@ -1,68 +1,97 @@
-# Market Risk BI Training
+---
+hide:
+  - navigation
+  - toc
+---
 
-Welcome to a structured, **beginner-to-pro** training on **Market Risk** designed specifically for BI and data professionals working at securities firms.
+<div class="mr-hero" markdown>
 
-!!! tip "Who is this for?"
-    Data engineers, BI developers, analytics professionals, and anyone working with trading and risk data who wants to move beyond writing SQL — and start truly *understanding* the business.
+<p class="mr-hero__eyebrow">Market Risk · BI · Data Engineering</p>
 
-## Why This Training Exists
+<h1 class="mr-hero__title">From SQL writer to risk-data professional.</h1>
 
-Most market risk training materials are written for **risk managers** (who already know the business but need to learn the math) or for **quants** (who need to learn the models). Almost nothing is written for the **data professional** whose job is to source, model, store, and serve the data that all of the above depend on.
+<p class="mr-hero__subtitle">A structured, practitioner-grade training on market risk for the data engineers, BI developers, and analytics teams who model, store, and serve the numbers a trading desk runs on.</p>
 
-This training fills that gap. The focus is always on:
+[Start with Module 01](modules/01-market-risk-foundations.md){ .mr-hero__cta }
+[See the curriculum](curriculum.md){ .mr-hero__cta .mr-hero__cta--ghost }
 
-- **Table structures** — what does a sensitivity fact table actually look like?
-- **Grain** — what is one row in this fact?
-- **Dimensions** — what are the conformed dimensions of market risk?
-- **Aggregation rules** — what's additive, what isn't, and why does it matter?
-- **Reconciliation** — why don't Risk and Finance agree, and how is that handled in data?
+</div>
 
-…all framed inside the **business context** that makes the answers obvious.
+<div class="mr-stats" markdown>
 
-## What Makes This Different
+<div class="mr-stat" markdown>
+<p class="mr-stat__value">22</p>
+<p class="mr-stat__label">Modules</p>
+</div>
 
-- **BI-first lens.** Every concept is tied back to data modeling, queries, or table design.
-- **Statistics in context.** Stats appears *inside* the modules where it's needed (distributions inside the VaR module, Taylor series inside the P&L attribution module), never as abstract theory.
-- **Org chart awareness.** A whole module on how a securities firm is structured — because you can't model data well without knowing who owns it.
-- **Real-world pitfalls.** Anti-patterns and war stories from production risk reporting.
+<div class="mr-stat" markdown>
+<p class="mr-stat__value">7</p>
+<p class="mr-stat__label">Phases</p>
+</div>
 
-## Curriculum at a Glance
+<div class="mr-stat" markdown>
+<p class="mr-stat__value">8–12</p>
+<p class="mr-stat__label">Weeks part-time</p>
+</div>
 
-The training is **22 modules across 7 phases**, designed to be taken sequentially or used as reference.
+<div class="mr-stat" markdown>
+<p class="mr-stat__value">SQL · Python</p>
+<p class="mr-stat__label">Tooling</p>
+</div>
 
-| Phase | Theme | Modules |
-|-------|-------|---------|
-| 1 | Foundations | 1–4 |
-| 2 | Data Modeling Core | 5–7 |
-| 3 | Risk Measures | 8–10 |
-| 4 | Cross-Cutting Concepts | 11–14 |
-| 5 | Engineering Excellence | 15–18 |
-| 6 | Business-Aligned Pro | 19–21 |
-| 7 | Capstone | 22 |
+</div>
 
-**Estimated time:** 8–12 weeks part-time alongside a full-time job.
+## Why this training exists
 
-[See the full curriculum →](curriculum.md){ .md-button .md-button--primary }
+Most market-risk training is written for **risk managers** (who know the business and need the math) or for **quants** (who need the models). Almost nothing is written for the **data professional** whose job is to source, model, store, and serve the data that all of the above depend on.
 
-## How to Use This Site
+This training fills that gap. The focus is always on table structures, grain, dimensions, aggregation rules, and reconciliation — framed inside the business context that makes the answers obvious.
 
-- **Sequential learners:** start with [Module 1](modules/01-market-risk-foundations.md) and work through.
-- **Reference users:** use the navigation or search bar to jump to specific topics.
-- **Glossary lookups:** the [glossary](glossary.md) covers key terms you'll hear daily.
+## Pick a phase
 
-## Each Module Follows the Same Structure
+<div class="mr-phases" markdown>
 
-Every module contains:
+[<span class="mr-phase__num">Phase 01 · Modules 01–04</span>
+<span class="mr-phase__title">Foundations</span>
+<span class="mr-phase__desc">Market risk basics, how a securities firm is organised, the trade lifecycle, and the universe of financial instruments.</span>
+<span class="mr-phase__meta">→ Start here</span>](modules/01-market-risk-foundations.md){ .mr-phase }
 
-1. **Business explanation** — what this is and why it matters.
-2. **Conceptual data model** — entities, relationships, grain.
-3. **Example table structures** — realistic columns with types.
-4. **Common queries / aggregation patterns** — how the data is actually used.
-5. **Stats detour** *(where applicable)* — the statistics you need, taught in context.
-6. **Pitfalls and gotchas** — what goes wrong in the real world.
+[<span class="mr-phase__num">Phase 02 · Modules 05–07</span>
+<span class="mr-phase__title">Data Modeling Core</span>
+<span class="mr-phase__desc">Dimensional modeling under regulatory scrutiny: SCDs, conformed dimensions, fact-table types and grain.</span>
+<span class="mr-phase__meta">→ Modeling fundamentals</span>](modules/05-dimensional-modeling.md){ .mr-phase }
 
-## Get Started
+[<span class="mr-phase__num">Phase 03 · Modules 08–10</span>
+<span class="mr-phase__title">Risk Measures</span>
+<span class="mr-phase__desc">Sensitivities and the Greeks, Value at Risk and Expected Shortfall, and stress testing — with the data shapes that store them.</span>
+<span class="mr-phase__meta">→ The numbers that matter</span>](modules/08-sensitivities.md){ .mr-phase }
 
-Ready to begin?
+[<span class="mr-phase__num">Phase 04 · Modules 11–14</span>
+<span class="mr-phase__title">Cross-Cutting Concepts</span>
+<span class="mr-phase__desc">Market data lineage, additivity (and why VaR doesn't sum), bitemporality, and P&amp;L attribution.</span>
+<span class="mr-phase__meta">→ Concepts that span every module</span>](modules/11-market-data.md){ .mr-phase }
 
-[Start with Module 1: Market Risk Foundations →](modules/01-market-risk-foundations.md){ .md-button .md-button--primary }
+[<span class="mr-phase__num">Phase 05 · Modules 15–18</span>
+<span class="mr-phase__title">Engineering Excellence</span>
+<span class="mr-phase__desc">Data quality, lineage and auditability, performance and materialization, and reference architectures for risk warehouses.</span>
+<span class="mr-phase__meta">→ Production-grade discipline</span>](modules/15-data-quality.md){ .mr-phase }
+
+[<span class="mr-phase__num">Phase 06 · Modules 19–21</span>
+<span class="mr-phase__title">Business-Aligned Pro</span>
+<span class="mr-phase__desc">Regulatory context (Basel, FRTB, BCBS 239), translating business asks into data specs, and recognising anti-patterns.</span>
+<span class="mr-phase__meta">→ Talk to the desk</span>](modules/19-regulatory-context.md){ .mr-phase }
+
+[<span class="mr-phase__num">Phase 07 · Module 22</span>
+<span class="mr-phase__title">Capstone</span>
+<span class="mr-phase__desc">Design and implement a small risk reporting mart end-to-end, with a rubric and reference-solution outline.</span>
+<span class="mr-phase__meta">→ Put it together</span>](modules/22-capstone.md){ .mr-phase }
+
+</div>
+
+## How to use this site
+
+- **Sequential learners** — start with [Module 01](modules/01-market-risk-foundations.md) and work through.
+- **Reference users** — jump straight to a topic via the sidebar or search.
+- **Quick lookups** — the [glossary](glossary.md) covers terms you'll hear daily.
+
+Each module follows the same eight-section structure: learning objectives, why it matters, core concepts, worked examples (SQL + Python), common pitfalls, exercises with solutions, further reading, and a recap.
