@@ -88,10 +88,25 @@ This training fills that gap. The focus is always on table structures, grain, di
 
 </div>
 
+## What's covered, what's not
+
+| In scope | Out of scope |
+|----------|--------------|
+| Classical historical, parametric, and Monte Carlo VaR | Full pricing-model derivations (Black–Scholes calibration, SABR, local vol) |
+| Sensitivities and the Greeks at conceptual + data-shape level | Detailed FRTB capital-calculation implementation |
+| FRTB at conceptual level (SA bucketing, IMA / PLA framework) | Real-time / streaming risk |
+| Dimensional modelling for risk warehouses | ML-augmented risk modelling |
+| Bitemporality, lineage, data quality | Vendor product training (Bloomberg, Refinitiv specifics) |
+| The regulatory landscape (Basel, FRTB, BCBS 239) | Regulatory exam prep (CFA / FRM / PRM) |
+| Capstone project — design a small risk mart end-to-end | |
+
+The training treats the data professional's perspective as primary. Where the maths matters for the data shape, it's covered in context; where it doesn't, it's deferred to specialist sources.
+
 ## How to use this site
 
-- **Sequential learners** — start with [Module 01](modules/01-market-risk-foundations.md) and work through.
+- **Sequential learners** — start with [Module 01](modules/01-market-risk-foundations.md) and work through to [Module 22](modules/22-capstone.md).
 - **Reference users** — jump straight to a topic via the sidebar or search.
 - **Quick lookups** — the [glossary](glossary.md) covers terms you'll hear daily.
+- **Planning your time** — see the [curriculum overview](curriculum.md) for per-module hour estimates and three suggested study sequences (sequential beginner, VaR-focused refresher, architecture-focused).
 
-Each module follows the same eight-section structure: learning objectives, why it matters, core concepts, worked examples (SQL + Python), common pitfalls, exercises with solutions, further reading, and a recap.
+Each module follows the same eight-section structure: **learning objectives**, **why it matters**, **core concepts**, **worked examples** (SQL + Python), **common pitfalls**, **exercises with solutions**, **further reading**, and a **recap**.
