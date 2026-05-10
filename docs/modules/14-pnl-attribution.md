@@ -322,6 +322,10 @@ A note on **the loader's batch_id and load_batch_id columns**. The DDL above inc
 
 A third practitioner aside on **FX revaluation P&L**. A book denominated in USD that holds JPY positions has two daily P&L components attributable to FX: the FX *revaluation* of the JPY position back into USD at the new USDJPY rate, and the per-Greek attribution within the JPY position (which is itself in JPY). Naively rolling the FX revaluation into the per-Greek delta-P&L (treating USDJPY as just another spot risk factor) double-counts: the JPY position has a delta to JPY-denominated underlyings, *and* the position is reported back in USD via the FX rate, and both moves are picked up by the warehouse if the schema is not careful. The cure is to keep the FX revaluation as a separate `fx_translation_pnl` row in `fact_pnl_attribution`, distinct from the per-Greek delta-P&L of the underlying spot exposures. This is the same Module 12 currency-aggregation discipline applied to attribution; the per-currency rows live separately, and the FX translation lives as its own line item.
 
+### Tooling note
+
+The `valuation-reviewer` agent in Anthropic's open-source `claude-for-financial-services` catalogue automates the first-pass valuation review that traditionally happens in a Methodology team. For data engineers, this is relevant because the agent expects sensitivities, market-data snapshots, and prior-day valuations in roughly the same shape Module 14 prescribes — a sign that the data shape we describe in this module is becoming an implicit interface that downstream agent tooling assumes.
+
 ## 4. Worked examples
 
 ### Example 1 — Python: Taylor-series attribution for a single option position

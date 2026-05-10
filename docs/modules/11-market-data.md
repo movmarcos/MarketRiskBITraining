@@ -257,6 +257,8 @@ A practical observation on **dispensation auditability**. Every dispensation gra
 
 A second observation on **the publication contract**. Every layer should publish a contract — what it accepts as input, what it guarantees as output, what its refresh cadence is, what its sign-off SLA is. Consumers code against the contract, not against undocumented behaviour, and contract changes go through a change-control process that notifies all affected consumers. Without the contract, every consumer is implicitly betting on the layer behaving the way it behaved yesterday, and unannounced changes break consumer queries silently. With the contract, the layer becomes a stable platform other systems can build on.
 
+**Industry trend (2026).** The same vendor connectors are being exposed as MCP (Model Context Protocol) plugins. Anthropic's open-source `claude-for-financial-services` marketplace ships official `lseg` (Refinitiv) and `spglobal` connectors that an LLM agent can call directly. Whether or not your firm adopts agent-based workflows, the existence of these connectors signals the direction the vendor-feed layer is moving — from human-driven extracts to agent-callable APIs.
+
 ### 3.10 The cleansing operations
 
 What happens between vendor and cleansed? Five operations recur across asset classes:

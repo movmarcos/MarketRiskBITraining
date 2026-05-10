@@ -198,6 +198,8 @@ flowchart TB
 
 The principle does not change: the identifier is *which system you are looking from*, not *what the trade is*. The xref answers the second question.
 
+**Industry-current example.** `gl-reconciler` in Anthropic's open-source `claude-for-financial-services` catalogue automates the GL-to-source reconciliation pattern using the same xref-and-tie-out logic this section describes. The agent's prompt definition is open source and worth reading directly to see how the reconciliation rules are encoded — the structure mirrors the data shape we recommend.
+
 ## 4. Worked examples
 
 ### Example 1 — SQL: as-of state from an event log

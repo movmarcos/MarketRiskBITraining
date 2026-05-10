@@ -322,7 +322,11 @@ That five-step diagnosis is only possible because the analyst has internalised t
 - Bank for International Settlements, *Markets Committee papers on market structure*, [bis.org/about/factmktc.htm](https://www.bis.org/about/factmktc.htm) — periodic surveys of how the major asset-class markets are organised, useful for putting your firm's structure in context.
 - Internal: the firm's organisation chart and the data-ownership matrix in your data-governance wiki — the local concrete instance of everything in this module.
 
-## 8. Recap
+## 8. What is changing in 2026
+
+Several functions described in this module are being augmented (not replaced) by AI agents: month-end close (`month-end-closer`), GL reconciliation (`gl-reconciler`), KYC screening (`kyc-screener`), valuation review (`valuation-reviewer`). All of these are open-source plugins in Anthropic's `claude-for-financial-services` marketplace. The org chart hasn't moved yet, but the headcount mix per function is starting to. Data engineers supporting these functions will increasingly find themselves shaping the data interfaces these agents consume — which makes the conformance and bitemporality patterns covered later in this course (Modules 5–7, 13, 16) more strategically important, not less.
+
+## 9. Recap
 
 You should now be able to:
 

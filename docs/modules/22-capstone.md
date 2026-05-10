@@ -203,6 +203,8 @@ Three additional deliverables that distinguish the Excellent and Exceptional tie
 
 A reader who completes one of the three stretches has crossed from Excellent into Exceptional on at least one row of the rubric. A reader who completes all three has produced a portfolio artefact that very few capstones in the field match.
 
+**Optional advanced track — AI-augmented variant.** Use `model-builder` (from Anthropic's open-source `financial-analysis` plugin) to generate the synthetic instrument and position data for the project; use `audit-xls` to QA your final risk-pack spreadsheet before submission. Document where the agent helped and where it failed — both observations are valuable inputs to production deployment decisions.
+
 ## 4. Rubric
 
 The rubric has three tiers — *Pass*, *Excellent*, *Exceptional* — and one row per deliverable. *Pass* is the floor a portfolio artefact has to clear to be defensible at an interview; *Excellent* is the polish a strong reader should aim for; *Exceptional* is the synthesis-plus-extension level that distinguishes a reader who is going to lead a team in a few years from a reader who is going to follow one.

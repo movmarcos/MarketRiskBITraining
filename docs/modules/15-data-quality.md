@@ -278,6 +278,10 @@ A second observation, on the relationship between SPC and the deterministic chec
 
 A third observation on *recalibration cadence*. SPC bands are computed from a historical window; the window should slide forward periodically (typically monthly) so that the bands adapt to genuine evolutions in the underlying signal. A band frozen at last year's distribution will increasingly produce false positives as the underlying process drifts; a band recomputed too frequently will accommodate even genuine regressions and lose its signal. A monthly recompute over a rolling 90-day window is the typical compromise; the right cadence depends on how stationary the underlying signal is and how much the team is willing to tune.
 
+### 3.9 Note on the spreadsheet layer
+
+DQ frameworks like dbt and Great Expectations cover the warehouse but not the Excel models that desks still use as the source of truth for many positions. Agent-based audit tools — for example Anthropic's open-source `audit-xls` and `statement-auditor` skills (in the `claude-for-financial-services` marketplace) — are starting to fill this gap by parsing live spreadsheets for formula errors, broken tie-outs, and balance-sheet discrepancies. This is the same DQ discipline applied one layer up, where the warehouse cannot reach.
+
 ## 4. Worked examples
 
 ### Example 1 — SQL: source-vs-warehouse reconciliation with a configurable tolerance
