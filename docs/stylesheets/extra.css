@@ -1,137 +1,144 @@
 /* ============================================================
-   Market Risk BI Training — Anthropic-warm palette
-   Light: cream + terracotta. Dark: coffee-black + soft terracotta.
-   Right ToC removed; content fills the freed space.
+   Market Risk BI Training — Modern playful palette
+   White body, deep purple primary, mint + yellow accents.
+   Geometric shape decorations on hero + phase cards only.
+   Body content stays clean for long-form reading.
    ============================================================ */
 
 :root {
-  /* Brand */
-  --mr-cream:        #FAF8F2;
-  --mr-cream-deep:   #F4EFE3;
-  --mr-paper:        #FFFFFF;
-  --mr-terracotta:   #C8552B;
-  --mr-terracotta-2: #A04321;
-  --mr-terracotta-soft: rgba(200, 85, 43, 0.10);
-  --mr-terracotta-glow: rgba(200, 85, 43, 0.18);
+  /* Brand palette */
+  --mr-purple:        #5B4FE6;   /* primary accent */
+  --mr-purple-dark:   #4A3FD0;   /* hover */
+  --mr-purple-light:  #8E83FF;   /* dark-mode accent */
+  --mr-purple-soft:   rgba(91, 79, 230, 0.08);
+  --mr-purple-glow:   rgba(91, 79, 230, 0.18);
 
-  --mr-text:         #2A1F18;
-  --mr-text-soft:    #5C4F46;
-  --mr-text-faint:   #8A7B6E;
-  --mr-rule:         rgba(42, 31, 24, 0.10);
+  --mr-mint:          #2EC4B6;
+  --mr-yellow:        #FFD93D;
 
-  /* Dark */
-  --mr-coffee:       #1B1614;
-  --mr-coffee-2:     #25201D;
-  --mr-coffee-3:     #2F2926;
-  --mr-cream-dark:   #F5EFE8;
-  --mr-cream-dim:    #C8B7A8;
-  --mr-cream-faint:  #8C7E72;
-  --mr-rule-dark:    rgba(245, 239, 232, 0.10);
-  --mr-terracotta-bright: #E89478;
+  /* Light surfaces */
+  --mr-white:         #FFFFFF;
+  --mr-canvas:        #FFFFFF;
+  --mr-surface-2:     #F4F5F8;   /* code wells */
+
+  /* Light text */
+  --mr-ink:           #0F0F1A;   /* near-black, warm */
+  --mr-ink-soft:      #4A4F66;
+  --mr-ink-faint:     #8590A8;
+  --mr-rule:          rgba(15, 15, 26, 0.08);
+
+  /* Dark surfaces */
+  --mr-night:         #0F0E1A;   /* deep purple-tinted near-black */
+  --mr-night-2:       #1A1830;
+  --mr-night-3:       #252342;
+
+  /* Dark text */
+  --mr-snow:          #F4F5F8;
+  --mr-snow-dim:      #B8BCD0;
+  --mr-snow-faint:    #6B6F88;
+  --mr-rule-dark:     rgba(244, 245, 248, 0.10);
 }
 
 /* ============================================================
    LIGHT scheme
    ============================================================ */
 [data-md-color-scheme="default"] {
-  --md-default-bg-color:         var(--mr-cream);
-  --md-default-bg-color--light:  var(--mr-paper);
+  --md-default-bg-color:         var(--mr-white);
+  --md-default-bg-color--light:  var(--mr-white);
   --md-default-bg-color--lighter:#FFFFFF;
   --md-default-bg-color--lightest:#FFFFFF;
 
-  --md-default-fg-color:         var(--mr-text);
-  --md-default-fg-color--light:  var(--mr-text-soft);
-  --md-default-fg-color--lighter:var(--mr-text-faint);
-  --md-default-fg-color--lightest:#A89A8C;
+  --md-default-fg-color:         var(--mr-ink);
+  --md-default-fg-color--light:  var(--mr-ink-soft);
+  --md-default-fg-color--lighter:var(--mr-ink-faint);
+  --md-default-fg-color--lightest:#A8B0C2;
 
-  --md-primary-fg-color:         var(--mr-cream);
-  --md-primary-fg-color--light:  var(--mr-cream-deep);
-  --md-primary-fg-color--dark:   #E8DDC8;
-  --md-primary-bg-color:         var(--mr-text);
-  --md-primary-bg-color--light:  var(--mr-text-soft);
+  --md-primary-fg-color:         var(--mr-white);
+  --md-primary-fg-color--light:  #F8F9FB;
+  --md-primary-fg-color--dark:   #EAECF1;
+  --md-primary-bg-color:         var(--mr-ink);
+  --md-primary-bg-color--light:  var(--mr-ink-soft);
 
-  --md-accent-fg-color:               var(--mr-terracotta);
-  --md-accent-fg-color--transparent:  var(--mr-terracotta-soft);
+  --md-accent-fg-color:               var(--mr-purple);
+  --md-accent-fg-color--transparent:  var(--mr-purple-soft);
 
-  --md-typeset-a-color:          var(--mr-terracotta);
-  --md-typeset-mark-color:       rgba(200, 85, 43, 0.20);
+  --md-typeset-a-color:          var(--mr-purple);
+  --md-typeset-mark-color:       rgba(255, 217, 61, 0.55);
 
-  --md-code-bg-color:            var(--mr-cream-deep);
-  --md-code-fg-color:            var(--mr-text);
-  --md-code-hl-color:            rgba(200, 85, 43, 0.15);
-  --md-code-hl-keyword-color:    #A04321;
-  --md-code-hl-function-color:   #5C6BC0;
-  --md-code-hl-string-color:     #4E7A4D;
-  --md-code-hl-number-color:     #B85C2C;
-  --md-code-hl-comment-color:    #8A7B6E;
-  --md-code-hl-name-color:       var(--mr-text);
-  --md-code-hl-operator-color:   #A04321;
-  --md-code-hl-punctuation-color:#5C4F46;
+  --md-code-bg-color:            var(--mr-surface-2);
+  --md-code-fg-color:            var(--mr-ink);
+  --md-code-hl-color:            var(--mr-purple-soft);
+  --md-code-hl-keyword-color:    #6B3AB8;
+  --md-code-hl-function-color:   #2563EB;
+  --md-code-hl-string-color:     #0E8A6B;
+  --md-code-hl-number-color:     #B5450C;
+  --md-code-hl-comment-color:    var(--mr-ink-faint);
+  --md-code-hl-name-color:       var(--mr-ink);
+  --md-code-hl-operator-color:   #6B3AB8;
+  --md-code-hl-punctuation-color:var(--mr-ink-soft);
 
-  --md-admonition-bg-color:      var(--mr-paper);
-  --md-admonition-fg-color:      var(--mr-text);
+  --md-admonition-bg-color:      var(--mr-white);
+  --md-admonition-fg-color:      var(--mr-ink);
 
-  --md-footer-bg-color:          var(--mr-text);
-  --md-footer-bg-color--dark:    #1A130E;
+  --md-footer-bg-color:          var(--mr-ink);
+  --md-footer-bg-color--dark:    #07060F;
 }
 
-/* Light header — cream with subtle border, dark text (Anthropic style) */
 [data-md-color-scheme="default"] .md-header {
-  color: var(--mr-text);
+  color: var(--mr-ink);
   border-bottom: 1px solid var(--mr-rule);
   box-shadow: none;
 }
 
 [data-md-color-scheme="default"] .md-tabs {
-  color: var(--mr-text);
-  background: var(--mr-cream);
+  color: var(--mr-ink);
+  background: var(--mr-white);
   border-bottom: 1px solid var(--mr-rule);
 }
 
 /* ============================================================
-   DARK scheme — warm coffee
+   DARK scheme — deep purple night
    ============================================================ */
 [data-md-color-scheme="slate"] {
-  --md-hue: 25;
+  --md-hue: 250;
 
-  --md-default-bg-color:         var(--mr-coffee);
-  --md-default-bg-color--light:  var(--mr-coffee-2);
-  --md-default-bg-color--lighter:var(--mr-coffee-3);
-  --md-default-bg-color--lightest:#3A332F;
+  --md-default-bg-color:         var(--mr-night);
+  --md-default-bg-color--light:  var(--mr-night-2);
+  --md-default-bg-color--lighter:var(--mr-night-3);
+  --md-default-bg-color--lightest:#322F58;
 
-  --md-default-fg-color:         var(--mr-cream-dark);
-  --md-default-fg-color--light:  var(--mr-cream-dim);
-  --md-default-fg-color--lighter:var(--mr-cream-faint);
-  --md-default-fg-color--lightest:#6B5F55;
+  --md-default-fg-color:         var(--mr-snow);
+  --md-default-fg-color--light:  var(--mr-snow-dim);
+  --md-default-fg-color--lighter:var(--mr-snow-faint);
+  --md-default-fg-color--lightest:#4F5370;
 
-  --md-primary-fg-color:         var(--mr-coffee);
-  --md-primary-fg-color--light:  var(--mr-coffee-2);
-  --md-primary-fg-color--dark:   #14100E;
-  --md-primary-bg-color:         var(--mr-cream-dark);
+  --md-primary-fg-color:         var(--mr-night);
+  --md-primary-fg-color--light:  var(--mr-night-2);
+  --md-primary-fg-color--dark:   #07060F;
+  --md-primary-bg-color:         var(--mr-snow);
 
-  --md-accent-fg-color:               var(--mr-terracotta-bright);
-  --md-accent-fg-color--transparent:  rgba(232, 148, 120, 0.12);
+  --md-accent-fg-color:               var(--mr-purple-light);
+  --md-accent-fg-color--transparent:  rgba(142, 131, 255, 0.14);
 
-  --md-typeset-a-color:          var(--mr-terracotta-bright);
-  --md-typeset-mark-color:       rgba(232, 148, 120, 0.25);
+  --md-typeset-a-color:          var(--mr-purple-light);
+  --md-typeset-mark-color:       rgba(255, 217, 61, 0.40);
 
-  --md-code-bg-color:            #15110F;
-  --md-code-fg-color:            var(--mr-cream-dark);
-  --md-code-hl-color:            rgba(232, 148, 120, 0.18);
-  --md-code-hl-keyword-color:    var(--mr-terracotta-bright);
-  --md-code-hl-function-color:   #93A4FF;
-  --md-code-hl-string-color:     #95C58F;
-  --md-code-hl-number-color:     #FFB088;
-  --md-code-hl-comment-color:    #6B5F55;
-  --md-code-hl-name-color:       var(--mr-cream-dark);
-  --md-code-hl-operator-color:   var(--mr-terracotta-bright);
-  --md-code-hl-punctuation-color:var(--mr-cream-dim);
+  --md-code-bg-color:            #0A091A;
+  --md-code-fg-color:            var(--mr-snow);
+  --md-code-hl-color:            rgba(142, 131, 255, 0.18);
+  --md-code-hl-keyword-color:    var(--mr-purple-light);
+  --md-code-hl-function-color:   #6FA9FF;
+  --md-code-hl-string-color:     #5DD9B4;
+  --md-code-hl-number-color:     var(--mr-yellow);
+  --md-code-hl-comment-color:    var(--mr-snow-faint);
+  --md-code-hl-name-color:       var(--mr-snow);
+  --md-code-hl-operator-color:   var(--mr-purple-light);
 
-  --md-admonition-bg-color:      var(--mr-coffee-2);
-  --md-admonition-fg-color:      var(--mr-cream-dark);
+  --md-admonition-bg-color:      var(--mr-night-2);
+  --md-admonition-fg-color:      var(--mr-snow);
 
-  --md-footer-bg-color:          #14100E;
-  --md-footer-bg-color--dark:    #0F0C0A;
+  --md-footer-bg-color:          #07060F;
+  --md-footer-bg-color--dark:    #03020A;
 }
 
 [data-md-color-scheme="slate"] .md-header {
@@ -140,12 +147,12 @@
 }
 
 [data-md-color-scheme="slate"] .md-tabs {
-  background: var(--mr-coffee);
+  background: var(--mr-night);
   border-bottom: 1px solid var(--mr-rule-dark);
 }
 
 /* ============================================================
-   Hide right ToC sidebar; reclaim the space for content
+   Hide right ToC; reclaim space
    ============================================================ */
 .md-sidebar--secondary {
   display: none !important;
@@ -162,7 +169,7 @@
 }
 
 /* ============================================================
-   Sidebar nav refinement
+   Sidebar nav
    ============================================================ */
 .md-nav {
   font-size: 0.74rem;
@@ -186,7 +193,7 @@
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   line-height: 1.4;
-  border-radius: 3px;
+  border-radius: 4px;
   transition: background 0.12s ease, color 0.12s ease;
 }
 
@@ -195,17 +202,17 @@
 }
 
 .md-nav__link--active {
-  color: var(--mr-terracotta) !important;
+  color: var(--mr-purple) !important;
   font-weight: 600;
   background: var(--md-accent-fg-color--transparent);
 }
 
 [data-md-color-scheme="slate"] .md-nav__link--active {
-  color: var(--mr-terracotta-bright) !important;
+  color: var(--mr-purple-light) !important;
 }
 
 /* ============================================================
-   Typography polish
+   Typography
    ============================================================ */
 .md-typeset {
   font-feature-settings: "ss01", "cv01", "cv11";
@@ -217,20 +224,20 @@
 .md-typeset h2,
 .md-typeset h3,
 .md-typeset h4 {
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--mr-text);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  color: var(--mr-ink);
 }
 
 [data-md-color-scheme="slate"] .md-typeset h1,
 [data-md-color-scheme="slate"] .md-typeset h2,
 [data-md-color-scheme="slate"] .md-typeset h3,
 [data-md-color-scheme="slate"] .md-typeset h4 {
-  color: var(--mr-cream-dark);
+  color: var(--mr-snow);
 }
 
 .md-typeset h1 {
-  font-size: 2.1rem;
+  font-size: 2.3rem;
   margin-top: 0.2em;
   border-bottom: 1px solid var(--mr-rule);
   padding-bottom: 0.4em;
@@ -241,12 +248,12 @@
 }
 
 .md-typeset h2 {
-  font-size: 1.45rem;
+  font-size: 1.55rem;
   margin-top: 2em;
 }
 
 .md-typeset h3 {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
 }
 
 .md-typeset table:not([class]) td {
@@ -257,7 +264,7 @@
    Code blocks
    ============================================================ */
 .md-typeset pre > code {
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid var(--mr-rule);
 }
 
@@ -267,15 +274,15 @@
 
 .md-typeset code {
   font-feature-settings: "ss01", "ss02", "ss03";
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 0.1em 0.35em;
   font-size: 0.86em;
 }
 
 .md-typeset .highlight .filename {
   background: var(--md-code-bg-color);
-  border-bottom: 1px solid var(--mr-terracotta);
-  color: var(--mr-terracotta);
+  border-bottom: 1px solid var(--mr-purple);
+  color: var(--mr-purple);
   font-family: var(--md-code-font);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
@@ -283,18 +290,18 @@
 }
 
 [data-md-color-scheme="slate"] .md-typeset .highlight .filename {
-  border-bottom-color: var(--mr-terracotta-bright);
-  color: var(--mr-terracotta-bright);
+  border-bottom-color: var(--mr-purple-light);
+  color: var(--mr-purple-light);
 }
 
 /* ============================================================
-   Admonitions — accent stripe
+   Admonitions
    ============================================================ */
 .md-typeset .admonition,
 .md-typeset details {
-  border-left-width: 3px;
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(42, 31, 24, 0.04);
+  border-left-width: 4px;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(15, 15, 26, 0.04);
 }
 
 [data-md-color-scheme="slate"] .md-typeset .admonition,
@@ -307,10 +314,10 @@
    ============================================================ */
 .md-typeset table:not([class]) {
   border: 1px solid var(--mr-rule);
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
   font-size: 0.82rem;
-  box-shadow: 0 1px 2px rgba(42, 31, 24, 0.04);
+  box-shadow: 0 1px 2px rgba(15, 15, 26, 0.04);
 }
 
 [data-md-color-scheme="slate"] .md-typeset table:not([class]) {
@@ -319,8 +326,8 @@
 }
 
 .md-typeset table:not([class]) th {
-  background: var(--mr-text);
-  color: var(--mr-cream);
+  background: var(--mr-purple);
+  color: #FFFFFF;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.7rem;
@@ -328,118 +335,179 @@
 }
 
 [data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
-  background: var(--mr-coffee-3);
-  color: var(--mr-cream-dark);
+  background: var(--mr-night-3);
+  color: var(--mr-snow);
 }
 
 /* ============================================================
-   Hero (homepage)
+   HERO — modern with geometric flourishes
+   Background SVG layers: a yellow arch + a mint half-circle + a purple zigzag.
    ============================================================ */
 .mr-hero {
+  position: relative;
   margin: 1rem 0 2rem;
-  padding: 2.5rem 2rem;
-  background: var(--mr-paper);
+  padding: 3rem 2.5rem 3.2rem;
+  background: var(--mr-white);
   border: 1px solid var(--mr-rule);
-  border-left: 3px solid var(--mr-terracotta);
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(42, 31, 24, 0.04);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(15, 15, 26, 0.04);
+}
+
+.mr-hero::before,
+.mr-hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Yellow large half-circle — top right */
+.mr-hero::before {
+  top: -90px;
+  right: -90px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: var(--mr-yellow);
+  opacity: 0.85;
+  z-index: 0;
+}
+
+/* Mint zigzag-ish quarter shape — bottom left */
+.mr-hero::after {
+  bottom: -80px;
+  left: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--mr-mint);
+  opacity: 0.65;
+  z-index: 0;
+}
+
+/* Purple decorative zigzag — top left, drawn with inline SVG */
+.mr-hero {
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='28' viewBox='0 0 90 28'><polyline points='0,14 15,2 30,14 45,2 60,14 75,2 90,14' stroke='%235B4FE6' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: 30px 26px;
+  background-size: 90px 28px;
 }
 
 [data-md-color-scheme="slate"] .mr-hero {
-  background: var(--mr-coffee-2);
+  background-color: var(--mr-night-2);
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='28' viewBox='0 0 90 28'><polyline points='0,14 15,2 30,14 45,2 60,14 75,2 90,14' stroke='%238E83FF' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   border-color: var(--mr-rule-dark);
-  border-left-color: var(--mr-terracotta-bright);
   box-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .mr-hero::before {
+  opacity: 0.55;
+}
+
+[data-md-color-scheme="slate"] .mr-hero::after {
+  opacity: 0.45;
+}
+
+/* Hero text — make sure it sits above the shapes */
+.mr-hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .mr-hero__eyebrow {
   display: inline-block;
   font-family: var(--md-code-font);
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--mr-terracotta);
-  margin: 0 0 0.6rem;
+  color: var(--mr-purple);
+  margin: 0 0 0.8rem;
+  padding-top: 1.4rem;  /* leave room for the zigzag SVG above */
 }
 
 [data-md-color-scheme="slate"] .mr-hero__eyebrow {
-  color: var(--mr-terracotta-bright);
+  color: var(--mr-purple-light);
 }
 
 .mr-hero__title {
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--mr-text);
-  margin: 0 0 0.6rem;
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--mr-ink);
+  margin: 0 0 0.7rem;
+  max-width: 22ch;
 }
 
 [data-md-color-scheme="slate"] .mr-hero__title {
-  color: var(--mr-cream-dark);
+  color: var(--mr-snow);
 }
 
 .mr-hero__subtitle {
-  font-size: 1.05rem;
-  color: var(--mr-text-soft);
+  font-size: 1.08rem;
+  color: var(--mr-ink-soft);
   max-width: 56ch;
-  margin: 0 0 1.4rem;
+  margin: 0 0 1.6rem;
+  line-height: 1.55;
 }
 
 [data-md-color-scheme="slate"] .mr-hero__subtitle {
-  color: var(--mr-cream-dim);
+  color: var(--mr-snow-dim);
 }
 
 .mr-hero__cta {
   display: inline-block;
-  padding: 0.65rem 1.2rem;
-  background: var(--mr-terracotta);
+  padding: 0.75rem 1.4rem;
+  background: var(--mr-purple);
   color: #FFFFFF !important;
-  border-radius: 3px;
+  border-radius: 999px;
   font-weight: 600;
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
   text-decoration: none !important;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .mr-hero__cta:hover {
-  background: var(--mr-terracotta-2);
+  background: var(--mr-purple-dark);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px var(--mr-terracotta-glow);
+  box-shadow: 0 6px 16px var(--mr-purple-glow);
 }
 
 .mr-hero__cta--ghost {
   margin-left: 0.6rem;
   background: transparent;
-  color: var(--mr-terracotta) !important;
-  border: 1px solid var(--mr-terracotta);
+  color: var(--mr-purple) !important;
+  border: 1.5px solid var(--mr-purple);
+  padding: 0.6rem 1.3rem;  /* compensate for border */
 }
 
 .mr-hero__cta--ghost:hover {
-  background: var(--mr-terracotta);
+  background: var(--mr-purple);
   color: #FFFFFF !important;
   box-shadow: none;
 }
 
 [data-md-color-scheme="slate"] .mr-hero__cta {
-  background: var(--mr-terracotta-bright);
-  color: var(--mr-coffee) !important;
+  background: var(--mr-purple-light);
+  color: var(--mr-night) !important;
 }
 
 [data-md-color-scheme="slate"] .mr-hero__cta:hover {
-  background: #FFAA8E;
+  background: #A89DFF;
 }
 
 [data-md-color-scheme="slate"] .mr-hero__cta--ghost {
   background: transparent;
-  color: var(--mr-terracotta-bright) !important;
-  border-color: var(--mr-terracotta-bright);
+  color: var(--mr-purple-light) !important;
+  border-color: var(--mr-purple-light);
 }
 
 [data-md-color-scheme="slate"] .mr-hero__cta--ghost:hover {
-  background: rgba(232, 148, 120, 0.12);
-  color: var(--mr-terracotta-bright) !important;
+  background: rgba(142, 131, 255, 0.14);
+  color: var(--mr-purple-light) !important;
 }
 
 /* ============================================================
@@ -449,7 +517,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0;
-  margin: 2rem 0;
+  margin: 2.5rem 0;
   border-top: 1px solid var(--mr-rule);
   border-bottom: 1px solid var(--mr-rule);
 }
@@ -459,7 +527,7 @@
 }
 
 .mr-stat {
-  padding: 1rem 1.2rem;
+  padding: 1.1rem 1.3rem;
   border-right: 1px solid var(--mr-rule);
 }
 
@@ -471,90 +539,99 @@
 
 .mr-stat__value {
   font-family: var(--md-code-font);
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--mr-terracotta);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--mr-purple);
   line-height: 1;
   margin: 0 0 0.2rem;
 }
 
 [data-md-color-scheme="slate"] .mr-stat__value {
-  color: var(--mr-terracotta-bright);
+  color: var(--mr-purple-light);
 }
 
 .mr-stat__label {
   font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--mr-text-faint);
+  color: var(--mr-ink-faint);
   margin: 0;
 }
 
 [data-md-color-scheme="slate"] .mr-stat__label {
-  color: var(--mr-cream-faint);
+  color: var(--mr-snow-faint);
 }
 
 /* ============================================================
-   Phase cards grid
+   Phase cards — each gets a corner geometric shape
+   Cycling through purple / mint / yellow via nth-child.
    ============================================================ */
 .mr-phases {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0 2rem;
+  gap: 1.1rem;
+  margin: 2rem 0 2.5rem;
 }
 
 .mr-phase {
+  position: relative;
   display: block;
-  padding: 1.2rem 1.3rem;
+  padding: 1.4rem 1.4rem 1.5rem;
   border: 1px solid var(--mr-rule);
-  border-radius: 6px;
-  background: var(--mr-paper);
+  border-radius: 12px;
+  background: var(--mr-white);
   text-decoration: none !important;
   color: inherit !important;
   transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-  position: relative;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(42, 31, 24, 0.04);
+  box-shadow: 0 1px 2px rgba(15, 15, 26, 0.04);
 }
 
 [data-md-color-scheme="slate"] .mr-phase {
-  background: var(--mr-coffee-2);
+  background: var(--mr-night-2);
   border-color: var(--mr-rule-dark);
   box-shadow: none;
 }
 
-.mr-phase::before {
+/* Decorative shape in the top-right corner of each card */
+.mr-phase::after {
   content: "";
   position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--mr-text-faint);
-  transition: background 0.15s ease, width 0.15s ease;
+  top: -25px;
+  right: -25px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.18;
+  transition: opacity 0.15s ease, transform 0.2s ease;
+  z-index: 0;
 }
 
-[data-md-color-scheme="slate"] .mr-phase::before {
-  background: var(--mr-cream-faint);
+/* Color cycle: purple, mint, yellow, purple, mint, yellow, purple */
+.mr-phase:nth-child(3n+1)::after { background: var(--mr-purple); }
+.mr-phase:nth-child(3n+2)::after { background: var(--mr-mint); }
+.mr-phase:nth-child(3n+3)::after { background: var(--mr-yellow); }
+
+/* Make children sit above the corner shape */
+.mr-phase > * {
+  position: relative;
+  z-index: 1;
 }
 
 .mr-phase:hover {
-  border-color: var(--mr-terracotta);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(42, 31, 24, 0.08);
+  border-color: var(--mr-purple);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(15, 15, 26, 0.08);
 }
 
 [data-md-color-scheme="slate"] .mr-phase:hover {
-  border-color: var(--mr-terracotta-bright);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  border-color: var(--mr-purple-light);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.mr-phase:hover::before {
-  background: var(--mr-terracotta);
-  width: 4px;
-}
-
-[data-md-color-scheme="slate"] .mr-phase:hover::before {
-  background: var(--mr-terracotta-bright);
+.mr-phase:hover::after {
+  opacity: 0.35;
+  transform: scale(1.15);
 }
 
 .mr-phase__num {
@@ -562,48 +639,49 @@
   font-family: var(--md-code-font);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
-  color: var(--mr-terracotta);
+  color: var(--mr-purple);
   text-transform: uppercase;
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.45rem;
+  font-weight: 600;
 }
 
 [data-md-color-scheme="slate"] .mr-phase__num {
-  color: var(--mr-terracotta-bright);
+  color: var(--mr-purple-light);
 }
 
 .mr-phase__title {
   display: block;
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0 0 0.5rem;
-  color: var(--mr-text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  margin: 0 0 0.55rem;
+  color: var(--mr-ink);
 }
 
 [data-md-color-scheme="slate"] .mr-phase__title {
-  color: var(--mr-cream-dark);
+  color: var(--mr-snow);
 }
 
 .mr-phase__desc {
   display: block;
-  font-size: 0.84rem;
-  color: var(--mr-text-soft);
+  font-size: 0.85rem;
+  color: var(--mr-ink-soft);
   line-height: 1.55;
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.8rem;
 }
 
 [data-md-color-scheme="slate"] .mr-phase__desc {
-  color: var(--mr-cream-dim);
+  color: var(--mr-snow-dim);
 }
 
 .mr-phase__meta {
   display: block;
   font-family: var(--md-code-font);
   font-size: 0.7rem;
-  color: var(--mr-text-faint);
+  color: var(--mr-ink-faint);
   letter-spacing: 0.04em;
 }
 
 [data-md-color-scheme="slate"] .mr-phase__meta {
-  color: var(--mr-cream-faint);
+  color: var(--mr-snow-faint);
 }
