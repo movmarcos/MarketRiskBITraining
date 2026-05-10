@@ -204,7 +204,7 @@ Sell-side vs. buy-side terminology differs throughout — worth keeping a person
 
 Many large firms run a **dual matrix**: by **product** AND by **region**.
 
-```
+```text
                 EMEA    APAC    AMRS
    Rates         R-E     R-A     R-M
    Credit        C-E     C-A     C-M

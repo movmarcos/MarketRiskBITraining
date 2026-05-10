@@ -373,7 +373,7 @@ A third observation on the *xref dimension's place in the architecture*. `dim_co
 
 The dbt project is the operational manifestation of the medallion architecture. The directory tree below is the canonical shape; every line corresponds to a layer or a cross-cutting concern from §3.4.
 
-```
+```text
 models/
   bronze/
     _sources.yml              # declares the bronze tables as dbt sources

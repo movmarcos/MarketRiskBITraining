@@ -619,7 +619,7 @@ if __name__ == "__main__":
 
 Running the script (against the seeded synthetic data) produces:
 
-```
+```text
 N = 250  days  |  99% VaR =      2,603,258   99% ES =      2,937,712
 N = 1000 days  |  99% VaR =      2,744,457   99% ES =      3,636,513
 
@@ -686,7 +686,7 @@ if __name__ == "__main__":
 
 Running the full script produces:
 
-```
+```text
 Analytic 1-day 99% VaR:  $201,041
 
 Monte Carlo VaR  N =     1,000   VaR = $     216,668   rel. err = +7.773%

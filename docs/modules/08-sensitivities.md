@@ -308,7 +308,7 @@ Three orthogonal axes:
 
 The defensive posture is to store the bumping convention as a *string* on `fact_sensitivity` (or as an FK to a `dim_bumping_convention` if the convention is high-cardinality and reused across feeds). Two examples of well-formed conventions:
 
-```
+```text
 "1bp absolute parallel shift on USD-SOFR-OIS, central difference, full revaluation"
 "1% relative shift on USD-SPX-IMPLIED-VOL, one-sided up bump, Taylor-series approximation"
 ```
@@ -466,7 +466,7 @@ if __name__ == "__main__":
 
 Run on the benchmark option \(S = K = 100, \sigma = 20\%, r = 2\%, T = 1y\), the analytic delta is \(N(d_1) \approx 0.57925971\) and the central-difference numerical delta with \(h = 10^{-4}\) agrees to about 11 decimal places. The error scan at the bottom of the script shows the expected behaviour: as \(h\) shrinks from \(10^{-1}\) to \(10^{-3}\) the error drops quadratically (central difference is second-order accurate in \(h\)), then plateaus, then *grows* as floating-point cancellation in the numerator \((V(S+h) - V(S-h))\) starts dominating the truncation error of the finite-difference formula.
 
-```
+```text
 Bump size h | numerical delta  | error vs analytic
 --------------------------------------------------------
   1e-01     | 0.5792590577     | 6.52e-07

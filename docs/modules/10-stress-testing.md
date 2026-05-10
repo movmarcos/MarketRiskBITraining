@@ -383,7 +383,7 @@ The `stressed_pnl_linear` function pivots the long-format input to a wide matrix
 
 The output for the inputs in the script:
 
-```
+```text
 Per-position stressed P&L (Delta-only, linear approximation)
 ----------------------------------------------------------------
      POS_001  stressed P&L =           -1,250 USD
@@ -398,7 +398,7 @@ POS_001's loss of \$1,250 comes from −250,000 (delta) × +0.0050 (shock) — b
 
 **The Delta-Gamma extension.** For an option position the linear approximation is incomplete — the curvature term ½·Γ·dS² is non-trivial under the kind of large shocks stress scenarios contemplate. The script's second half adds the gamma term for a single option position with a 2M SPX delta and 5M of gamma:
 
-```
+```text
 Delta-Gamma extension — single option position
 ----------------------------------------------------------------
   Shock applied (EQUITY_SPX, relative): -20.0%
