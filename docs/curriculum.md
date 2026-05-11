@@ -1,6 +1,6 @@
 # Curriculum Overview
 
-The training is structured as **22 modules** across **7 phases**, taking you from beginner to a confident, business-aligned BI professional in market risk.
+The training is structured as **24 modules** across **8 phases**, taking you from beginner to a confident, business-aligned BI professional in market risk.
 
 ## 📘 Phase 1 — Foundations
 
@@ -73,6 +73,15 @@ Bring it all together.
 |---|--------|-------|
 | 22 | [End-to-End Walkthrough](modules/22-capstone.md) | Design a full market risk data mart from scratch |
 
+## 🏛️ Phase 8 — Vendor Systems (applied)
+
+The applied layer. The previous modules taught the *theory* of a risk warehouse; this phase covers the *practice* of integrating real vendor systems against it. Phase 8 starts with a vendor-agnostic framework and instantiates it with a deep applied case study on Murex MX.3 — the dominant capital-markets platform at most tier-1 banks. The framework is extensible: future contributors can fork Module 24's pattern to write the analogous module for Calypso, Polypaths, Quantserver, Summit, Front Arena, or Sophis.
+
+| # | Module | Focus |
+|---|--------|-------|
+| 23 | [Vendor Systems Framework](modules/23-vendor-systems-framework.md) | Vendor categories, the 6-step onboarding template, the catalogue table, where vendor data fits in the medallion architecture |
+| 24 | [Murex (MX.3) Applied](modules/24-murex-applied.md) | Datamart extraction, identifier xref, Murex DQ checks, version-upgrade planning — the framework instantiated for the field's dominant trading platform |
+
 ## Statistics Coverage
 
 Statistics is **woven through the modules** rather than taught separately. The training does not have a dedicated "stats" phase; instead, each statistical concept is introduced exactly where the data shape demands it. By the end you will have learned, in context:
@@ -118,7 +127,9 @@ Realistic part-time estimates (assuming you work the worked examples and at leas
 | 20 | [Working with the Business](modules/20-working-with-business.md) | 3–5 |
 | 21 | [Anti-patterns & War Stories](modules/21-antipatterns.md) | 3–5 |
 | 22 | [Capstone](modules/22-capstone.md) | 20–40 (depth-dependent) |
-| | **Total** | **~150–220 hours** |
+| 23 | [Vendor Systems Framework](modules/23-vendor-systems-framework.md) | 6–8 |
+| 24 | [Murex (MX.3) Applied](modules/24-murex-applied.md) | 8–10 |
+| | **Total** | **~165–240 hours** |
 
 ## Suggested Pace
 
@@ -131,7 +142,8 @@ Realistic part-time estimates (assuming you work the worked examples and at leas
 | Phase 5 | ~1–2 weeks |
 | Phase 6 | ~1 week |
 | Phase 7 | ~1 week (or as long as you want — capstone depth is up to you) |
-| **Total** | **~8–12 weeks** part-time |
+| Phase 8 | ~1–2 weeks (M23 is short; M24 is dense) |
+| **Total** | **~9–14 weeks** part-time |
 
 ## Suggested Study Sequences
 
@@ -153,9 +165,9 @@ This skips the lifecycle / instruments primer and jumps straight to fact tables,
 
 You're an engineer or architect and care about the warehouse, not the maths. Recommended path:
 
-[M01](modules/01-market-risk-foundations.md) → [M02](modules/02-securities-firm-organization.md) → [M05](modules/05-dimensional-modeling.md) → [M06](modules/06-core-dimensions.md) → [M07](modules/07-fact-tables.md) → [M15](modules/15-data-quality.md) → [M16](modules/16-lineage-auditability.md) → [M17](modules/17-performance-materialization.md) → [M18](modules/18-architecture-patterns.md) → [M21](modules/21-antipatterns.md)
+[M01](modules/01-market-risk-foundations.md) → [M02](modules/02-securities-firm-organization.md) → [M05](modules/05-dimensional-modeling.md) → [M06](modules/06-core-dimensions.md) → [M07](modules/07-fact-tables.md) → [M15](modules/15-data-quality.md) → [M16](modules/16-lineage-auditability.md) → [M17](modules/17-performance-materialization.md) → [M18](modules/18-architecture-patterns.md) → [M21](modules/21-antipatterns.md) → [M23](modules/23-vendor-systems-framework.md) → [M24](modules/24-murex-applied.md)
 
-This gives you the business framing, the dimensional core, and the entire engineering-excellence phase, plus the war-stories module. Skim [M09](modules/09-value-at-risk.md) and [M13](modules/13-time-bitemporality.md) for the data shapes only. ~60–80 hours.
+This gives you the business framing, the dimensional core, the entire engineering-excellence phase, the war-stories module, and the applied vendor-onboarding phase that puts the architecture into practice against real systems. Skim [M09](modules/09-value-at-risk.md) and [M13](modules/13-time-bitemporality.md) for the data shapes only. ~75–100 hours.
 
 ## Ready to Start?
 
