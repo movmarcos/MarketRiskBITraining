@@ -169,46 +169,167 @@
 }
 
 /* ============================================================
-   Sidebar nav
+   Sidebar nav — redesigned
+   Phase headers are visually distinct section markers.
+   Module items are quieter at rest; loud when active.
    ============================================================ */
+
 .md-nav {
-  font-size: 0.74rem;
+  font-size: 0.78rem;
 }
 
-.md-nav__title {
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  color: var(--md-default-fg-color--light);
+/* Hide the "Table of contents" label on internal sub-navs (less visual noise) */
+.md-nav__title[for="__toc"] {
+  display: none;
+}
+
+/* The primary sidebar's outer title (the site name) */
+.md-sidebar--primary .md-nav__title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--mr-ink);
+  padding: 1rem 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--mr-rule);
+  margin-bottom: 0.4rem;
+}
+
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__title {
+  color: var(--mr-snow);
+  border-bottom-color: var(--mr-rule-dark);
+}
+
+/* ---------- Phase headers (top-level nested items) ---------- */
+.md-nav--primary > .md-nav__list > .md-nav__item--nested {
+  margin-top: 1.1rem;
   padding-top: 0.6rem;
+  border-top: 1px solid var(--mr-rule);
 }
 
-.md-nav__item {
-  padding-top: 0.05rem;
-  padding-bottom: 0.05rem;
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__list > .md-nav__item--nested {
+  border-top-color: var(--mr-rule-dark);
 }
 
-.md-nav__link {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-  line-height: 1.4;
-  border-radius: 4px;
-  transition: background 0.12s ease, color 0.12s ease;
+.md-nav--primary > .md-nav__list > .md-nav__item--nested:first-child {
+  margin-top: 0.4rem;
+  padding-top: 0;
+  border-top: none;
 }
 
-.md-nav__link:hover {
-  background: var(--md-accent-fg-color--transparent);
+/* The phase header label itself */
+.md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mr-ink);
+  padding: 0.35rem 0.6rem 0.45rem 1.1rem;
+  margin: 0 0 0.15rem;
+  position: relative;
+  border-radius: 0;
 }
 
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+  color: var(--mr-snow);
+}
+
+/* Phase header marker — purple dot on the left */
+.md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link::before {
+  content: "";
+  position: absolute;
+  left: 0.3rem;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--mr-purple);
+  transform: translateY(-50%);
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link::before {
+  background: var(--mr-purple-light);
+}
+
+/* Color-cycle the phase markers (purple / mint / yellow) for visual rhythm */
+.md-nav--primary > .md-nav__list > .md-nav__item--nested:nth-of-type(3n+2) > .md-nav__link::before {
+  background: var(--mr-mint);
+}
+.md-nav--primary > .md-nav__list > .md-nav__item--nested:nth-of-type(3n+3) > .md-nav__link::before {
+  background: var(--mr-yellow);
+}
+
+/* Phase header hover — keep neutral; clicking should expand silently */
+.md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link:hover {
+  background: transparent;
+  color: var(--mr-purple);
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link:hover {
+  color: var(--mr-purple-light);
+}
+
+/* ---------- Module items (nested inside a phase) ---------- */
+.md-nav--primary .md-nav .md-nav__link {
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--mr-ink-soft);
+  padding: 0.45rem 0.6rem 0.45rem 1.1rem;
+  margin: 0.1rem 0;
+  border-radius: 0;
+  border-left: 2px solid transparent;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, padding-left 0.12s ease;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav .md-nav__link {
+  color: var(--mr-snow-dim);
+}
+
+.md-nav--primary .md-nav .md-nav__link:hover {
+  color: var(--mr-purple);
+  background: var(--mr-purple-soft);
+  border-left-color: var(--mr-purple);
+  padding-left: 1.2rem;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav .md-nav__link:hover {
+  color: var(--mr-purple-light);
+  background: rgba(142, 131, 255, 0.10);
+  border-left-color: var(--mr-purple-light);
+}
+
+/* ---------- Active module ---------- */
 .md-nav__link--active {
   color: var(--mr-purple) !important;
-  font-weight: 600;
-  background: var(--md-accent-fg-color--transparent);
+  font-weight: 600 !important;
+  background: var(--mr-purple-soft) !important;
+  border-left: 3px solid var(--mr-purple) !important;
+  padding-left: 1.05rem !important;
 }
 
 [data-md-color-scheme="slate"] .md-nav__link--active {
   color: var(--mr-purple-light) !important;
+  background: rgba(142, 131, 255, 0.14) !important;
+  border-left-color: var(--mr-purple-light) !important;
+}
+
+/* Top-level leaf items (Home, Glossary) — keep subtle */
+.md-nav--primary > .md-nav__list > .md-nav__item:not(.md-nav__item--nested) > .md-nav__link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--mr-ink);
+  padding: 0.4rem 0.6rem 0.4rem 1.1rem;
+  border-left: 2px solid transparent;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__list > .md-nav__item:not(.md-nav__item--nested) > .md-nav__link {
+  color: var(--mr-snow);
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item:not(.md-nav__item--nested) > .md-nav__link:hover {
+  background: var(--mr-purple-soft);
+  border-left-color: var(--mr-purple);
 }
 
 /* ============================================================
