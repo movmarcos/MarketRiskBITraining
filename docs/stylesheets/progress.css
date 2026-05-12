@@ -1,0 +1,356 @@
+/* ============================================================
+   Market Risk BI Training — progress tracking UI
+   Re-uses palette variables from extra.css (--mr-purple, --mr-mint, etc).
+   Light + dark schemes; mobile-friendly.
+   ============================================================ */
+
+/* ---------- Header auth pill ---------- */
+.mr-auth {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-right: 0.6rem;
+  padding-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.mr-auth__user {
+  font-size: 0.74rem;
+  color: var(--mr-ink-soft);
+  max-width: 16ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-md-color-scheme="slate"] .mr-auth__user {
+  color: var(--mr-snow-dim);
+}
+
+.mr-auth-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border-radius: 999px;
+  border: 1px solid var(--mr-rule);
+  background: transparent;
+  color: var(--mr-ink);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, transform 0.12s ease;
+}
+
+.mr-auth-button:hover {
+  background: var(--mr-purple);
+  border-color: var(--mr-purple);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.mr-auth-button--ghost {
+  border-color: transparent;
+  color: var(--mr-ink-faint);
+  padding: 0.3rem 0.6rem;
+}
+
+.mr-auth-button--ghost:hover {
+  background: transparent;
+  color: var(--mr-purple);
+  border-color: transparent;
+  transform: none;
+  text-decoration: underline;
+}
+
+[data-md-color-scheme="slate"] .mr-auth-button {
+  border-color: var(--mr-rule-dark);
+  color: var(--mr-snow);
+}
+
+[data-md-color-scheme="slate"] .mr-auth-button:hover {
+  background: var(--mr-purple-light);
+  border-color: var(--mr-purple-light);
+  color: var(--mr-night);
+}
+
+[data-md-color-scheme="slate"] .mr-auth-button--ghost {
+  color: var(--mr-snow-faint);
+  border-color: transparent;
+}
+
+[data-md-color-scheme="slate"] .mr-auth-button--ghost:hover {
+  background: transparent;
+  color: var(--mr-purple-light);
+}
+
+/* On small screens, hide the email label; keep the button reachable */
+@media screen and (max-width: 44.99em) {
+  .mr-auth__user { display: none; }
+  .mr-auth-button { font-size: 0.7rem; padding: 0.3rem 0.65rem; }
+}
+
+/* ---------- Sign-in chooser overlay ---------- */
+.mr-auth-chooser {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 26, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+.mr-auth-chooser__card {
+  background: var(--mr-white);
+  border-radius: 14px;
+  padding: 1.8rem 1.8rem 1.4rem;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 12px 40px rgba(15, 15, 26, 0.25);
+  border: 1px solid var(--mr-rule);
+}
+
+[data-md-color-scheme="slate"] .mr-auth-chooser__card {
+  background: var(--mr-night-2);
+  border-color: var(--mr-rule-dark);
+}
+
+.mr-auth-chooser__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--mr-ink);
+}
+
+[data-md-color-scheme="slate"] .mr-auth-chooser__title {
+  color: var(--mr-snow);
+}
+
+.mr-auth-chooser__sub {
+  margin: 0 0 1.2rem;
+  font-size: 0.84rem;
+  color: var(--mr-ink-soft);
+  line-height: 1.5;
+}
+
+[data-md-color-scheme="slate"] .mr-auth-chooser__sub {
+  color: var(--mr-snow-dim);
+}
+
+.mr-auth-chooser__btn {
+  display: block;
+  width: 100%;
+  margin: 0.4rem 0 0;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.mr-auth-chooser__cancel {
+  display: block;
+  width: 100%;
+  margin: 0.9rem 0 0;
+  padding: 0.4rem;
+  background: transparent;
+  border: none;
+  color: var(--mr-ink-faint);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.mr-auth-chooser__cancel:hover {
+  color: var(--mr-purple);
+  text-decoration: underline;
+}
+
+[data-md-color-scheme="slate"] .mr-auth-chooser__cancel {
+  color: var(--mr-snow-faint);
+}
+
+[data-md-color-scheme="slate"] .mr-auth-chooser__cancel:hover {
+  color: var(--mr-purple-light);
+}
+
+/* ---------- Mark-complete CTA on module pages ---------- */
+.mr-mark-complete {
+  margin: 3rem 0 1rem;
+  padding: 1.6rem 1.4rem;
+  border-top: 1px solid var(--mr-rule);
+  text-align: center;
+}
+
+[data-md-color-scheme="slate"] .mr-mark-complete {
+  border-top-color: var(--mr-rule-dark);
+}
+
+.mr-mark-complete-cta {
+  display: inline-block;
+  padding: 0.85rem 1.8rem;
+  background: var(--mr-purple);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mr-mark-complete-cta:hover:not(:disabled) {
+  background: var(--mr-purple-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px var(--mr-purple-glow);
+}
+
+.mr-mark-complete-cta:disabled {
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.mr-mark-complete-cta--done {
+  background: transparent;
+  color: var(--mr-mint);
+  border: 1.5px solid var(--mr-mint);
+  cursor: default;
+}
+
+.mr-mark-complete-cta--done:hover:not(:disabled) {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+[data-md-color-scheme="slate"] .mr-mark-complete-cta {
+  background: var(--mr-purple-light);
+  color: var(--mr-night);
+}
+
+[data-md-color-scheme="slate"] .mr-mark-complete-cta:hover:not(:disabled) {
+  background: #A89DFF;
+}
+
+[data-md-color-scheme="slate"] .mr-mark-complete-cta--done {
+  background: transparent;
+  color: var(--mr-mint);
+  border-color: var(--mr-mint);
+}
+
+.mr-mark-incomplete-link {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  color: var(--mr-ink-faint);
+  text-decoration: none;
+}
+
+.mr-mark-incomplete-link:hover {
+  color: var(--mr-purple);
+  text-decoration: underline;
+}
+
+[data-md-color-scheme="slate"] .mr-mark-incomplete-link {
+  color: var(--mr-snow-faint);
+}
+
+[data-md-color-scheme="slate"] .mr-mark-incomplete-link:hover {
+  color: var(--mr-purple-light);
+}
+
+/* ---------- Homepage progress widget ---------- */
+.mr-progress {
+  margin: 0 0 2rem;
+  padding: 1.3rem 1.5rem;
+  background: var(--mr-purple-soft);
+  border: 1px solid var(--mr-rule);
+  border-left: 4px solid var(--mr-purple);
+  border-radius: 10px;
+}
+
+[data-md-color-scheme="slate"] .mr-progress {
+  background: rgba(142, 131, 255, 0.10);
+  border-color: var(--mr-rule-dark);
+  border-left-color: var(--mr-purple-light);
+}
+
+.mr-progress__label {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  color: var(--mr-ink);
+}
+
+[data-md-color-scheme="slate"] .mr-progress__label {
+  color: var(--mr-snow);
+}
+
+.mr-progress__pct {
+  color: var(--mr-ink-faint);
+  font-size: 0.85rem;
+  margin-left: 0.3rem;
+}
+
+[data-md-color-scheme="slate"] .mr-progress__pct {
+  color: var(--mr-snow-faint);
+}
+
+.mr-progress__bar {
+  display: block;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: rgba(91, 79, 230, 0.12);
+}
+
+.mr-progress__bar::-webkit-progress-bar {
+  background: rgba(91, 79, 230, 0.12);
+  border-radius: 999px;
+}
+
+.mr-progress__bar::-webkit-progress-value {
+  background: var(--mr-purple);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.mr-progress__bar::-moz-progress-bar {
+  background: var(--mr-purple);
+  border-radius: 999px;
+}
+
+[data-md-color-scheme="slate"] .mr-progress__bar {
+  background: rgba(142, 131, 255, 0.18);
+}
+
+[data-md-color-scheme="slate"] .mr-progress__bar::-webkit-progress-bar {
+  background: rgba(142, 131, 255, 0.18);
+}
+
+[data-md-color-scheme="slate"] .mr-progress__bar::-webkit-progress-value {
+  background: var(--mr-purple-light);
+}
+
+[data-md-color-scheme="slate"] .mr-progress__bar::-moz-progress-bar {
+  background: var(--mr-purple-light);
+}
+
+/* ---------- Sidebar completed checkmarks ---------- */
+.mr-sidebar-check {
+  display: inline-block;
+  margin-right: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--mr-mint);
+  line-height: 1;
+}
+
+[data-md-color-scheme="slate"] .mr-sidebar-check {
+  color: var(--mr-mint);
+}
