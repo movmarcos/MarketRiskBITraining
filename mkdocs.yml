@@ -77,40 +77,40 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - Curriculum Overview: curriculum.md
+  - Curriculum: curriculum.md
   - Phase 1 — Foundations:
-      - modules/01-market-risk-foundations.md
-      - modules/02-securities-firm-organization.md
-      - modules/03-trade-lifecycle.md
-      - modules/04-financial-instruments.md
-  - Phase 2 — Data Modeling Core:
-      - modules/05-dimensional-modeling.md
-      - modules/06-core-dimensions.md
-      - modules/07-fact-tables.md
+      - Market Risk Foundations: modules/01-market-risk-foundations.md
+      - Securities Firm Organisation: modules/02-securities-firm-organization.md
+      - Trade Lifecycle: modules/03-trade-lifecycle.md
+      - Financial Instruments: modules/04-financial-instruments.md
+  - Phase 2 — Data Modeling:
+      - Dimensional Modelling: modules/05-dimensional-modeling.md
+      - Core Dimensions: modules/06-core-dimensions.md
+      - Fact Tables: modules/07-fact-tables.md
   - Phase 3 — Risk Measures:
-      - modules/08-sensitivities.md
-      - modules/09-value-at-risk.md
-      - modules/10-stress-testing.md
-  - Phase 4 — Cross-Cutting Concepts:
-      - modules/11-market-data.md
-      - modules/12-aggregation-additivity.md
-      - modules/13-time-bitemporality.md
-      - modules/14-pnl-attribution.md
-  - Phase 5 — Engineering Excellence:
-      - modules/15-data-quality.md
-      - modules/16-lineage-auditability.md
-      - modules/17-performance-materialization.md
-      - modules/18-architecture-patterns.md
-  - Phase 6 — Business-Aligned Pro:
-      - modules/19-regulatory-context.md
-      - modules/20-working-with-business.md
-      - modules/21-antipatterns.md
+      - Sensitivities: modules/08-sensitivities.md
+      - Value at Risk: modules/09-value-at-risk.md
+      - Stress Testing: modules/10-stress-testing.md
+  - Phase 4 — Cross-Cutting:
+      - Market Data: modules/11-market-data.md
+      - Aggregation & Additivity: modules/12-aggregation-additivity.md
+      - Bitemporality: modules/13-time-bitemporality.md
+      - P&L Attribution: modules/14-pnl-attribution.md
+  - Phase 5 — Engineering:
+      - Data Quality: modules/15-data-quality.md
+      - Lineage & Auditability: modules/16-lineage-auditability.md
+      - Performance & Materialisation: modules/17-performance-materialization.md
+      - Architecture Patterns: modules/18-architecture-patterns.md
+  - Phase 6 — Business:
+      - Regulatory Context: modules/19-regulatory-context.md
+      - Working with Business: modules/20-working-with-business.md
+      - Anti-patterns: modules/21-antipatterns.md
   - Phase 7 — Capstone:
-      - modules/22-capstone.md
-  - Phase 8 — Vendor Systems (applied):
-      - modules/23-vendor-systems-framework.md
-      - modules/24-murex-applied.md
-      - modules/25-polypaths-applied.md
-      - modules/26-quantserver-applied.md
-      - modules/27-calypso-applied.md
+      - Capstone Project: modules/22-capstone.md
+  - Phase 8 — Vendor Systems:
+      - Vendor Framework: modules/23-vendor-systems-framework.md
+      - Murex: modules/24-murex-applied.md
+      - Polypaths: modules/25-polypaths-applied.md
+      - Quantserver: modules/26-quantserver-applied.md
+      - Calypso: modules/27-calypso-applied.md
   - Glossary: glossary.md
