@@ -111,4 +111,6 @@ nav:
       - modules/23-vendor-systems-framework.md
       - modules/24-murex-applied.md
       - modules/25-polypaths-applied.md
+      - modules/26-quantserver-applied.md
+      - modules/27-calypso-applied.md
   - Glossary: glossary.md

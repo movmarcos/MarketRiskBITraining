@@ -150,8 +150,8 @@ Below is the catalogue table the framework maintains as the warehouse's authorit
 | ----------------- | ------------------------------ | -------------------- | ---------------------------------------------------------- | -------------------------------------------- |
 | Murex (MX.3)      | Trading & risk platform        | Murex                | Cross-asset front-to-back-to-risk; tier-1 bank standard    | [Module 24](24-murex-applied.md)             |
 | Polypaths         | Trading & risk platform        | Polypaths Software Corp | Fixed-income analytics: OAS, prepayment, key-rate durations | [Module 25](25-polypaths-applied.md)         |
-| Quantserver       | Trading & risk platform        | Numerix              | Pricing-library service, often paired with Polypaths       | *(planned — starter for future contributor)* |
-| Calypso           | Trading & risk platform        | FIS (now Adenza)     | Capital-markets platform, strong in rates and credit       | *(planned — starter for future contributor)* |
+| Quantserver       | Trading & risk platform        | Numerix              | Pricing-library service, often paired with Polypaths       | [Module 26](26-quantserver-applied.md)       |
+| Calypso           | Trading & risk platform        | FIS (now Adenza)     | Capital-markets platform, strong in rates and credit       | [Module 27](27-calypso-applied.md)           |
 | Summit            | Trading & risk platform        | Finastra             | Capital markets, strong in fixed income                    | *(planned — starter for future contributor)* |
 | Front Arena       | Trading & risk platform        | ION (FIS heritage)   | Cross-asset front-to-risk, common in mid-tier banks        | *(planned — starter for future contributor)* |
 | Sophis            | Trading & risk platform        | Misys (now Finastra) | Equity and equity-derivatives, legacy at many shops        | *(planned — starter for future contributor)* |
