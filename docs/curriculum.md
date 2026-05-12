@@ -1,6 +1,6 @@
 # Curriculum Overview
 
-The training is structured as **24 modules** across **8 phases**, taking you from beginner to a confident, business-aligned BI professional in market risk.
+The training is structured as **25 modules** across **8 phases**, taking you from beginner to a confident, business-aligned BI professional in market risk.
 
 ## 📘 Phase 1 — Foundations
 
@@ -75,12 +75,13 @@ Bring it all together.
 
 ## 🏛️ Phase 8 — Vendor Systems (applied)
 
-The applied layer. The previous modules taught the *theory* of a risk warehouse; this phase covers the *practice* of integrating real vendor systems against it. Phase 8 starts with a vendor-agnostic framework and instantiates it with a deep applied case study on Murex MX.3 — the dominant capital-markets platform at most tier-1 banks. The framework is extensible: future contributors can fork Module 24's pattern to write the analogous module for Calypso, Polypaths, Quantserver, Summit, Front Arena, or Sophis.
+The applied layer. The previous modules taught the *theory* of a risk warehouse; this phase covers the *practice* of integrating real vendor systems against it. Phase 8 starts with a vendor-agnostic framework, instantiates it for the dominant trade-of-record platform at most tier-1 banks (Murex MX.3), and then instantiates it again for a structurally distinct case — Polypaths, the specialist fixed-income analytics calculator. The two applied modules together establish the two principal sub-shapes within the trading-and-risk-platform category (system-of-record and analytics-calculator). The framework is extensible: future contributors can fork the M24 or M25 pattern to write the analogous module for Calypso, Quantserver, Summit, Front Arena, or Sophis.
 
 | # | Module | Focus |
 |---|--------|-------|
 | 23 | [Vendor Systems Framework](modules/23-vendor-systems-framework.md) | Vendor categories, the 6-step onboarding template, the catalogue table, where vendor data fits in the medallion architecture |
-| 24 | [Murex (MX.3) Applied](modules/24-murex-applied.md) | Datamart extraction, identifier xref, Murex DQ checks, version-upgrade planning — the framework instantiated for the field's dominant trading platform |
+| 24 | [Murex (MX.3) Applied](modules/24-murex-applied.md) | Datamart extraction, identifier xref, Murex DQ checks, version-upgrade planning — the framework instantiated for the field's dominant trade-of-record platform |
+| 25 | [Polypaths Applied](modules/25-polypaths-applied.md) | OAS / prepayment / key-rate-duration analytics, run-snapshot bitemporality, calibration-recalibration impact — the framework instantiated for a specialist analytics calculator |
 
 ## Statistics Coverage
 
@@ -129,7 +130,8 @@ Realistic part-time estimates (assuming you work the worked examples and at leas
 | 22 | [Capstone](modules/22-capstone.md) | 20–40 (depth-dependent) |
 | 23 | [Vendor Systems Framework](modules/23-vendor-systems-framework.md) | 6–8 |
 | 24 | [Murex (MX.3) Applied](modules/24-murex-applied.md) | 8–10 |
-| | **Total** | **~165–240 hours** |
+| 25 | [Polypaths Applied](modules/25-polypaths-applied.md) | 6–8 |
+| | **Total** | **~170–250 hours** |
 
 ## Suggested Pace
 
@@ -142,7 +144,7 @@ Realistic part-time estimates (assuming you work the worked examples and at leas
 | Phase 5 | ~1–2 weeks |
 | Phase 6 | ~1 week |
 | Phase 7 | ~1 week (or as long as you want — capstone depth is up to you) |
-| Phase 8 | ~1–2 weeks (M23 is short; M24 is dense) |
+| Phase 8 | ~2–3 weeks (M23 is short; M24 is dense; M25 is narrower than M24) |
 | **Total** | **~9–14 weeks** part-time |
 
 ## Suggested Study Sequences
@@ -165,9 +167,9 @@ This skips the lifecycle / instruments primer and jumps straight to fact tables,
 
 You're an engineer or architect and care about the warehouse, not the maths. Recommended path:
 
-[M01](modules/01-market-risk-foundations.md) → [M02](modules/02-securities-firm-organization.md) → [M05](modules/05-dimensional-modeling.md) → [M06](modules/06-core-dimensions.md) → [M07](modules/07-fact-tables.md) → [M15](modules/15-data-quality.md) → [M16](modules/16-lineage-auditability.md) → [M17](modules/17-performance-materialization.md) → [M18](modules/18-architecture-patterns.md) → [M21](modules/21-antipatterns.md) → [M23](modules/23-vendor-systems-framework.md) → [M24](modules/24-murex-applied.md)
+[M01](modules/01-market-risk-foundations.md) → [M02](modules/02-securities-firm-organization.md) → [M05](modules/05-dimensional-modeling.md) → [M06](modules/06-core-dimensions.md) → [M07](modules/07-fact-tables.md) → [M15](modules/15-data-quality.md) → [M16](modules/16-lineage-auditability.md) → [M17](modules/17-performance-materialization.md) → [M18](modules/18-architecture-patterns.md) → [M21](modules/21-antipatterns.md) → [M23](modules/23-vendor-systems-framework.md) → [M24](modules/24-murex-applied.md) → [M25](modules/25-polypaths-applied.md)
 
-This gives you the business framing, the dimensional core, the entire engineering-excellence phase, the war-stories module, and the applied vendor-onboarding phase that puts the architecture into practice against real systems. Skim [M09](modules/09-value-at-risk.md) and [M13](modules/13-time-bitemporality.md) for the data shapes only. ~75–100 hours.
+This gives you the business framing, the dimensional core, the entire engineering-excellence phase, the war-stories module, and the applied vendor-onboarding phase that puts the architecture into practice against real systems — both a trade-of-record platform (Murex) and an analytics calculator (Polypaths). Skim [M09](modules/09-value-at-risk.md) and [M13](modules/13-time-bitemporality.md) for the data shapes only. ~80–110 hours.
 
 ## Ready to Start?
 

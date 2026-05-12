@@ -20,7 +20,7 @@ hide:
 <div class="mr-stats" markdown>
 
 <div class="mr-stat" markdown>
-<p class="mr-stat__value">24</p>
+<p class="mr-stat__value">25</p>
 <p class="mr-stat__label">Modules</p>
 </div>
 
@@ -86,9 +86,9 @@ This training fills that gap. The focus is always on table structures, grain, di
 <span class="mr-phase__desc">Design and implement a small risk reporting mart end-to-end, with a rubric and reference-solution outline.</span>
 <span class="mr-phase__meta">→ Put it together</span>](modules/22-capstone.md){ .mr-phase }
 
-[<span class="mr-phase__num">Phase 08 · Modules 23–24</span>
+[<span class="mr-phase__num">Phase 08 · Modules 23–25</span>
 <span class="mr-phase__title">Vendor Systems (applied)</span>
-<span class="mr-phase__desc">A framework for onboarding any vendor system to your warehouse, and a deep applied case study on Murex MX.3.</span>
+<span class="mr-phase__desc">A framework for onboarding any vendor system to your warehouse, with applied case studies for Murex (MX.3) and Polypaths fixed-income analytics.</span>
 <span class="mr-phase__meta">→ Real-world systems</span>](modules/23-vendor-systems-framework.md){ .mr-phase }
 
 </div>

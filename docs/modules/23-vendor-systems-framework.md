@@ -149,7 +149,7 @@ Below is the catalogue table the framework maintains as the warehouse's authorit
 | Name              | Category                       | Vendor               | Typical use                                                | Module link                                  |
 | ----------------- | ------------------------------ | -------------------- | ---------------------------------------------------------- | -------------------------------------------- |
 | Murex (MX.3)      | Trading & risk platform        | Murex                | Cross-asset front-to-back-to-risk; tier-1 bank standard    | [Module 24](24-murex-applied.md)             |
-| Polypaths         | Trading & risk platform        | Numerix              | Structured products and exotic derivatives                 | *(planned — starter for future contributor)* |
+| Polypaths         | Trading & risk platform        | Polypaths Software Corp | Fixed-income analytics: OAS, prepayment, key-rate durations | [Module 25](25-polypaths-applied.md)         |
 | Quantserver       | Trading & risk platform        | Numerix              | Pricing-library service, often paired with Polypaths       | *(planned — starter for future contributor)* |
 | Calypso           | Trading & risk platform        | FIS (now Adenza)     | Capital-markets platform, strong in rates and credit       | *(planned — starter for future contributor)* |
 | Summit            | Trading & risk platform        | Finastra             | Capital markets, strong in fixed income                    | *(planned — starter for future contributor)* |

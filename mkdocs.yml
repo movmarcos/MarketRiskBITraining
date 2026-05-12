@@ -110,4 +110,5 @@ nav:
   - Phase 8 — Vendor Systems (applied):
       - modules/23-vendor-systems-framework.md
       - modules/24-murex-applied.md
+      - modules/25-polypaths-applied.md
   - Glossary: glossary.md
