@@ -82,6 +82,38 @@
     }
   }
 
+  // ---- Last-visited tracking (localStorage) ------------------------------
+  var LAST_VISITED_KEY = "mr_last_visited";
+
+  function recordVisit() {
+    var moduleId = currentModuleId();
+    if (!moduleId) return;
+    var h1 = document.querySelector("article h1, .md-content__inner h1");
+    var title = h1 ? h1.textContent.trim() : "Module " + moduleId;
+    try {
+      localStorage.setItem(LAST_VISITED_KEY, JSON.stringify({
+        module_id: moduleId,
+        title: title,
+        url: window.location.pathname,
+        at: new Date().toISOString()
+      }));
+    } catch (_) {
+      // Private mode / storage disabled — safe to ignore.
+    }
+  }
+
+  function readLastVisited() {
+    try {
+      var raw = localStorage.getItem(LAST_VISITED_KEY);
+      if (!raw) return null;
+      var obj = JSON.parse(raw);
+      if (!obj || !obj.module_id || !obj.url) return null;
+      return obj;
+    } catch (_) {
+      return null;
+    }
+  }
+
   // ---- Data layer -------------------------------------------------------
   function loadProgress() {
     if (!state.user) {
@@ -375,16 +407,61 @@
     hero.parentNode.insertBefore(wrap, hero.nextSibling);
   }
 
+  function renderContinueCTA() {
+    if (!isHomePage()) return;
+    var hero = $(".mr-hero");
+    if (!hero) return;
+
+    var existing = $("#mr-continue");
+    if (existing) existing.remove();
+
+    if (!state.user) return;
+
+    var last = readLastVisited();
+    if (!last) return;
+    // Don't suggest continuing a module the user has already completed.
+    if (state.completed.has(last.module_id)) return;
+
+    var wrap = document.createElement("a");
+    wrap.id = "mr-continue";
+    wrap.className = "mr-continue";
+    wrap.href = last.url;
+
+    var label = document.createElement("span");
+    label.className = "mr-continue__label";
+    label.textContent = "Continue where you left off";
+    wrap.appendChild(label);
+
+    var title = document.createElement("span");
+    title.className = "mr-continue__title";
+    title.textContent = last.title;
+    wrap.appendChild(title);
+
+    var arrow = document.createElement("span");
+    arrow.className = "mr-continue__arrow";
+    arrow.textContent = "→";
+    wrap.appendChild(arrow);
+
+    // Insert after the hero, before the progress widget if it's there
+    var anchor = $("#mr-progress") || hero.nextSibling;
+    hero.parentNode.insertBefore(wrap, anchor);
+  }
+
   // ---- Render orchestration --------------------------------------------
   function renderAll() {
     renderAuthPill();
     renderModuleCTA();
     renderSidebarChecks();
     renderHomeWidget();
+    renderContinueCTA();
   }
 
   // ---- Init -------------------------------------------------------------
   function init() {
+    // Always record the visit if we're on a module page — anonymous or signed in.
+    // The Continue CTA still only renders for signed-in users (see renderContinueCTA).
+    recordVisit();
+
     client.auth.getSession().then(function (res) {
       var session = res && res.data ? res.data.session : null;
       state.user = session ? session.user : null;
