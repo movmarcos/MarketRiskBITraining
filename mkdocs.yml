@@ -121,4 +121,6 @@ nav:
           - Calypso: modules/27-calypso-applied.md
   - Credit Risk:
       - Track Overview: credit-modules/00-credit-risk-overview.md
+      - Phase 1 — Credit Foundations:
+          - Credit Risk Foundations: credit-modules/01-credit-risk-foundations.md
   - Glossary: glossary.md
