@@ -128,4 +128,5 @@ nav:
           - Credit Instruments: credit-modules/04-credit-instruments.md
       - Phase 3 — Risk Measures:
           - Probability of Default: credit-modules/07-probability-of-default.md
+          - Loss Given Default: credit-modules/08-loss-given-default.md
   - Glossary: glossary.md

@@ -27,7 +27,7 @@ This track is in active development. The track structure is set; modules are bei
 | 2 — Data Modeling | Core Credit Dimensions | Planned |
 | 2 — Data Modeling | Credit Fact Tables | Planned |
 | 3 — Risk Measures | [Probability of Default (PD)](07-probability-of-default.md) | Available |
-| 3 — Risk Measures | Loss Given Default (LGD) | Planned |
+| 3 — Risk Measures | [Loss Given Default (LGD)](08-loss-given-default.md) | Available |
 | 3 — Risk Measures | Exposure at Default (EAD) | Planned |
 | 3 — Risk Measures | Expected Loss (PD × LGD × EAD) | Planned |
 | 3 — Risk Measures | Unexpected Loss & Credit VaR | Planned |
