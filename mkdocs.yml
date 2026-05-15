@@ -132,4 +132,5 @@ nav:
           - Exposure at Default: credit-modules/09-exposure-at-default.md
           - Expected Loss: credit-modules/10-expected-loss.md
           - Unexpected Loss & Credit VaR: credit-modules/11-unexpected-loss-credit-var.md
+          - Credit Stress Testing: credit-modules/12-credit-stress-testing.md
   - Glossary: glossary.md
