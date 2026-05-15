@@ -123,4 +123,5 @@ nav:
       - Track Overview: credit-modules/00-credit-risk-overview.md
       - Phase 1 — Credit Foundations:
           - Credit Risk Foundations: credit-modules/01-credit-risk-foundations.md
+          - Credit Function in a Securities Firm: credit-modules/02-credit-function-in-firm.md
   - Glossary: glossary.md
