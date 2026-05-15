@@ -129,4 +129,5 @@ nav:
       - Phase 3 — Risk Measures:
           - Probability of Default: credit-modules/07-probability-of-default.md
           - Loss Given Default: credit-modules/08-loss-given-default.md
+          - Exposure at Default: credit-modules/09-exposure-at-default.md
   - Glossary: glossary.md
