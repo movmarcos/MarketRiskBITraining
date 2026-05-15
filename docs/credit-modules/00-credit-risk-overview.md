@@ -30,7 +30,7 @@ This track is in active development. The track structure is set; modules are bei
 | 3 — Risk Measures | [Loss Given Default (LGD)](08-loss-given-default.md) | Available |
 | 3 — Risk Measures | [Exposure at Default (EAD)](09-exposure-at-default.md) | Available |
 | 3 — Risk Measures | [Expected Loss (PD × LGD × EAD)](10-expected-loss.md) | Available |
-| 3 — Risk Measures | Unexpected Loss & Credit VaR | Planned |
+| 3 — Risk Measures | [Unexpected Loss & Credit VaR](11-unexpected-loss-credit-var.md) | Available |
 | 3 — Risk Measures | Credit Stress Testing | Planned |
 | 4 — Cross-cutting | Rating Systems & Migration | Planned |
 | 4 — Cross-cutting | Collateral & Netting | Planned |
