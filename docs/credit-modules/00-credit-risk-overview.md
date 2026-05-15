@@ -21,7 +21,7 @@ This track is in active development. The track structure is set; modules are bei
 |---|---|---|
 | 1 — Foundations | [Credit Risk Foundations](01-credit-risk-foundations.md) | Available |
 | 1 — Foundations | [The Credit Function in a Securities Firm](02-credit-function-in-firm.md) | Available |
-| 1 — Foundations | Loan / Bond / Credit-Derivative Lifecycle | Planned |
+| 1 — Foundations | [Loan / Bond / Credit-Derivative Lifecycle](03-credit-lifecycle.md) | Available |
 | 1 — Foundations | Credit Instruments | Planned |
 | 2 — Data Modeling | Dimensional Modelling *(shared with Market Risk)* | Available |
 | 2 — Data Modeling | Core Credit Dimensions | Planned |
