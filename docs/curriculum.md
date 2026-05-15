@@ -1,4 +1,6 @@
-# Curriculum Overview
+# Market Risk Curriculum
+
+> This is the curriculum overview for the **Market Risk Track**. The **Credit Risk Track** has its own [overview page](credit-modules/00-credit-risk-overview.md).
 
 The training is structured as **27 modules** across **8 phases**, taking you from beginner to a confident, business-aligned BI professional in market risk.
 

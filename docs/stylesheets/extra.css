@@ -806,3 +806,190 @@
 [data-md-color-scheme="slate"] .mr-phase__meta {
   color: var(--mr-snow-faint);
 }
+
+/* ============================================================
+   Track cards — bigger, more visual than phase cards.
+   Used on the homepage course chooser ("Pick your track").
+   Two-column on desktop, one-column on mobile.
+   First card (Market Risk):  purple → mint left stripe.
+   Second card (Credit Risk): yellow → purple left stripe.
+   ============================================================ */
+.mr-tracks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  margin: 2rem 0 3rem;
+}
+
+@media screen and (max-width: 60em) {
+  .mr-tracks {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
+.mr-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 270px;
+  padding: 2rem 2rem 1.8rem 2.4rem;
+  border: 1px solid var(--mr-rule);
+  border-radius: 16px;
+  background: var(--mr-white);
+  text-decoration: none !important;
+  color: inherit !important;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(15, 15, 26, 0.05);
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+[data-md-color-scheme="slate"] .mr-track {
+  background: var(--mr-night-2);
+  border-color: var(--mr-rule-dark);
+  box-shadow: none;
+}
+
+/* Left-side gradient stripe — distinct per track via :nth-of-type */
+.mr-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 8px;
+  z-index: 0;
+}
+
+.mr-tracks > .mr-track:nth-of-type(1)::before {
+  background: linear-gradient(180deg, var(--mr-purple) 0%, var(--mr-mint) 100%);
+}
+
+.mr-tracks > .mr-track:nth-of-type(2)::before {
+  background: linear-gradient(180deg, var(--mr-yellow) 0%, var(--mr-purple) 100%);
+}
+
+/* Decorative corner blob — colour-matched to the stripe */
+.mr-track::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  opacity: 0.14;
+  transition: opacity 0.18s ease, transform 0.25s ease;
+  z-index: 0;
+}
+
+.mr-tracks > .mr-track:nth-of-type(1)::after {
+  background: var(--mr-purple);
+}
+
+.mr-tracks > .mr-track:nth-of-type(2)::after {
+  background: var(--mr-yellow);
+}
+
+/* Children must sit above the decorative layers */
+.mr-track > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mr-track:hover {
+  border-color: var(--mr-purple);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(15, 15, 26, 0.10);
+}
+
+[data-md-color-scheme="slate"] .mr-track:hover {
+  border-color: var(--mr-purple-light);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
+}
+
+.mr-tracks > .mr-track:nth-of-type(2):hover {
+  border-color: var(--mr-yellow);
+}
+
+[data-md-color-scheme="slate"] .mr-tracks > .mr-track:nth-of-type(2):hover {
+  border-color: var(--mr-yellow);
+}
+
+.mr-track:hover::after {
+  opacity: 0.28;
+  transform: scale(1.15);
+}
+
+.mr-track__num {
+  display: block;
+  font-family: var(--md-code-font);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mr-purple);
+  font-weight: 600;
+  margin: 0 0 0.7rem;
+}
+
+[data-md-color-scheme="slate"] .mr-track__num {
+  color: var(--mr-purple-light);
+}
+
+.mr-tracks > .mr-track:nth-of-type(2) .mr-track__num {
+  color: var(--mr-ink-soft);
+}
+
+[data-md-color-scheme="slate"] .mr-tracks > .mr-track:nth-of-type(2) .mr-track__num {
+  color: var(--mr-snow-dim);
+}
+
+.mr-track__title {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--mr-ink);
+  margin: 0 0 0.85rem;
+}
+
+[data-md-color-scheme="slate"] .mr-track__title {
+  color: var(--mr-snow);
+}
+
+.mr-track__desc {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--mr-ink-soft);
+  margin: 0 0 1.3rem;
+  max-width: 44ch;
+}
+
+[data-md-color-scheme="slate"] .mr-track__desc {
+  color: var(--mr-snow-dim);
+}
+
+.mr-track__meta {
+  display: block;
+  margin-top: auto;
+  font-family: var(--md-code-font);
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--mr-purple);
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .mr-track__meta {
+  color: var(--mr-purple-light);
+}
+
+.mr-tracks > .mr-track:nth-of-type(2) .mr-track__meta {
+  color: var(--mr-ink-faint);
+}
+
+[data-md-color-scheme="slate"] .mr-tracks > .mr-track:nth-of-type(2) .mr-track__meta {
+  color: var(--mr-snow-faint);
+}
